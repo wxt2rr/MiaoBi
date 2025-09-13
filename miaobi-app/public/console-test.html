@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>控制台测试</title>
+</head>
+<body>
+    <h1>控制台测试页面</h1>
+    <button onclick="testConsole()">测试控制台输出</button>
+    <button onclick="testAlert()">测试Alert</button>
+    
+    <script>
+        function testConsole() {
+            console.log('测试 console.log');
+            console.error('测试 console.error');
+            console.warn('测试 console.warn');
+            console.info('测试 console.info');
+            alert('控制台测试完成，请检查控制台');
+        }
+        
+        function testAlert() {
+            alert('Alert测试正常');
+        }
+        
+        // 页面加载时自动测试
+        window.onload = function() {
+            console.log('页面加载完成');
+            console.error('页面加载完成 - ERROR');
+            console.warn('页面加载完成 - WARN');
+            console.info('页面加载完成 - INFO');
+        };
+    </script>
+</body>
+</html>

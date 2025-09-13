@@ -1,0 +1,3201 @@
+[
+  {
+    "name": "use-composed-ref",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "hooks/use-composed-ref.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-cursor-visibility",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [
+      "use-window-size",
+      "use-element-rect"
+    ],
+    "files": [
+      {
+        "path": "hooks/use-cursor-visibility.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-element-rect",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [
+      "use-throttled-callback"
+    ],
+    "files": [
+      {
+        "path": "hooks/use-element-rect.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-floating-element",
+    "type": "registry:hook",
+    "dependencies": [
+      "@floating-ui/react"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "hooks/use-floating-element.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-floating-toolbar-visibility",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "hooks/use-floating-toolbar-visibility.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-isomorphic-layout-effect",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "hooks/use-isomorphic-layout-effect.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-menu-navigation",
+    "type": "registry:hook",
+    "dependencies": [
+      "@tiptap/react"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "hooks/use-menu-navigation.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-mobile",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "hooks/use-mobile.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-on-click-outside",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [
+      "use-isomorphic-layout-effect"
+    ],
+    "files": [
+      {
+        "path": "hooks/use-on-click-outside.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-scrolling",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "hooks/use-scrolling.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-thread-handlers",
+    "type": "registry:hook",
+    "dependencies": [
+      "@tiptap-pro/provider",
+      "@tiptap/react"
+    ],
+    "registryDependencies": [
+      "user-context"
+    ],
+    "files": [
+      {
+        "path": "hooks/use-thread-handlers.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-thread-position",
+    "type": "registry:hook",
+    "dependencies": [
+      "@tiptap/react"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "hooks/use-thread-position.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-thread-sync",
+    "type": "registry:hook",
+    "dependencies": [],
+    "registryDependencies": [
+      "app-context",
+      "collab-context"
+    ],
+    "files": [
+      {
+        "path": "hooks/use-thread-sync.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-throttled-callback",
+    "type": "registry:hook",
+    "dependencies": [
+      "lodash.throttle"
+    ],
+    "devDependencies": [
+      "@types/lodash.throttle"
+    ],
+    "registryDependencies": [
+      "use-unmount"
+    ],
+    "files": [
+      {
+        "path": "hooks/use-throttled-callback.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-tiptap-editor",
+    "type": "registry:hook",
+    "dependencies": [
+      "@tiptap/react"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "hooks/use-tiptap-editor.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-ui-editor-state",
+    "type": "registry:hook",
+    "dependencies": [
+      "@tiptap/react"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "hooks/use-ui-editor-state.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-unmount",
+    "type": "registry:hook",
+    "dependencies": [],
+    "devDependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "hooks/use-unmount.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "use-window-size",
+    "type": "registry:hook",
+    "registryDependencies": [
+      "use-throttled-callback"
+    ],
+    "files": [
+      {
+        "path": "hooks/use-window-size.ts",
+        "type": "registry:hook"
+      }
+    ]
+  },
+  {
+    "name": "blockquote-node",
+    "type": "registry:node",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "tiptap-node/blockquote-node/blockquote-node.scss",
+        "type": "registry:node"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "code-block-node",
+    "type": "registry:node",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "tiptap-node/code-block-node/code-block-node.scss",
+        "type": "registry:node"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "heading-node",
+    "type": "registry:node",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "tiptap-node/heading-node/heading-node.scss",
+        "type": "registry:node"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "horizontal-rule-node",
+    "type": "registry:node",
+    "dependencies": [
+      "@tiptap/extension-horizontal-rule"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-node/horizontal-rule-node/horizontal-rule-node-extension.ts",
+        "type": "registry:node"
+      },
+      {
+        "path": "tiptap-node/horizontal-rule-node/horizontal-rule-node.scss",
+        "type": "registry:node"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "image-node",
+    "type": "registry:node",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-node/image-node/image-node.scss",
+        "type": "registry:node"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "image-node-pro",
+    "type": "registry:node",
+    "dependencies": [
+      "@tiptap/extension-image"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "tiptap-utils",
+      "delete-node-button",
+      "image-download-button",
+      "image-align-button",
+      "separator",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-node/image-node/image-node-extension.ts",
+        "type": "registry:node"
+      },
+      {
+        "path": "tiptap-node/image-node/image-node-floating.tsx",
+        "type": "registry:node"
+      },
+      {
+        "path": "tiptap-node/image-node/image-node-view.scss",
+        "type": "registry:node"
+      },
+      {
+        "path": "tiptap-node/image-node/image-node-view.tsx",
+        "type": "registry:node"
+      },
+      {
+        "path": "tiptap-node/image-node/image-node.scss",
+        "type": "registry:node"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "image-upload-node",
+    "type": "registry:node",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "close-icon",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-node/image-upload-node/image-upload-node-extension.ts",
+        "type": "registry:node"
+      },
+      {
+        "path": "tiptap-node/image-upload-node/image-upload-node.scss",
+        "type": "registry:node"
+      },
+      {
+        "path": "tiptap-node/image-upload-node/image-upload-node.tsx",
+        "type": "registry:node"
+      },
+      {
+        "path": "tiptap-node/image-upload-node/index.tsx",
+        "type": "registry:node"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "list-node",
+    "type": "registry:node",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-node/list-node/list-node.scss",
+        "type": "registry:node"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "mathematics-node",
+    "type": "registry:node",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-node/mathematics-node/mathematics-node.scss",
+        "type": "registry:node"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "paragraph-node",
+    "type": "registry:node",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-node/paragraph-node/paragraph-node.scss",
+        "type": "registry:node"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "simple-editor",
+    "type": "registry:template",
+    "description": "Light editor UI components and extensions",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/starter-kit",
+      "@tiptap/extension-image",
+      "@tiptap/extension-list",
+      "@tiptap/extensions",
+      "@tiptap/extension-text-align",
+      "@tiptap/extension-typography"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "button",
+      "spacer",
+      "toolbar",
+      "arrow-left-icon",
+      "highlighter-icon",
+      "link-icon",
+      "moon-star-icon",
+      "sun-icon",
+      "use-mobile",
+      "use-window-size",
+      "use-cursor-visibility",
+      "use-scrolling",
+      "image-upload-node",
+      "code-block-node",
+      "blockquote-node",
+      "horizontal-rule-node",
+      "heading-node",
+      "list-node",
+      "image-node",
+      "paragraph-node",
+      "heading-dropdown-menu",
+      "image-upload-button",
+      "list-dropdown-menu",
+      "blockquote-button",
+      "code-block-button",
+      "color-highlight-popover",
+      "link-popover",
+      "mark-button",
+      "text-align-button",
+      "undo-redo-button",
+      "tiptap-utils",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-templates/simple/page.tsx",
+        "type": "registry:page",
+        "target": "app/simple/page.tsx"
+      },
+      {
+        "path": "tiptap-templates/simple/components/simple-editor.scss",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/simple/components/simple-editor.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/simple/components/theme-toggle.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/simple/data/content.json",
+        "type": "registry:page",
+        "target": "app/simple/data/content.json"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "comment",
+    "type": "registry:template",
+    "description": "A comment starter block",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/starter-kit",
+      "@tiptap/extension-image",
+      "@tiptap/extension-mention",
+      "@tiptap/extensions",
+      "@tiptap/extension-collaboration",
+      "@tiptap/extension-collaboration-caret",
+      "@tiptap/extension-typography",
+      "@tiptap-pro/extension-comments",
+      "@tiptap/extension-emoji",
+      "@tiptap-pro/provider",
+      "yjs"
+    ],
+    "registryDependencies": [
+      "app-context",
+      "collab-context",
+      "user-context",
+      "emoji-dropdown-menu",
+      "mention-dropdown-menu",
+      "slash-dropdown-menu",
+      "heading-dropdown-menu",
+      "list-dropdown-menu",
+      "comments",
+      "thread",
+      "button",
+      "spacer",
+      "sidebar",
+      "image-upload-node",
+      "code-block-node",
+      "blockquote-node",
+      "horizontal-rule-node",
+      "heading-node",
+      "list-node",
+      "image-node",
+      "paragraph-node",
+      "comment-bubbles-extension",
+      "ui-state-extension",
+      "sun-icon",
+      "moon-star-icon",
+      "tiptap-utils",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-templates/comment/page.tsx",
+        "type": "registry:page",
+        "target": "app/comment/page.tsx"
+      },
+      {
+        "path": "tiptap-templates/comment/components/comment-editor-header.scss",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/comment/components/comment-editor-header.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/comment/components/comment-editor.scss",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/comment/components/comment-editor.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/comment/components/comment-toolbar-floating.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/comment/components/thread-panel.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/comment/components/theme-toggle.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/comment/data/content.json",
+        "type": "registry:page",
+        "target": "app/comment/data/content.json"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ],
+    "hide": true
+  },
+  {
+    "name": "notion-like-editor",
+    "type": "registry:template",
+    "description": "A block based Notion-like editor",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/starter-kit",
+      "@tiptap/extension-image",
+      "@tiptap/extension-mention",
+      "@tiptap/extensions",
+      "@tiptap/extension-collaboration",
+      "@tiptap/extension-collaboration-caret",
+      "@tiptap/extension-typography",
+      "@tiptap/extension-emoji",
+      "@tiptap-pro/provider",
+      "yjs",
+      "@tiptap/extension-mathematics",
+      "@tiptap/extension-unique-id"
+    ],
+    "registryDependencies": [
+      "use-cursor-visibility",
+      "use-window-size",
+      "use-scrolling",
+      "use-floating-toolbar-visibility",
+      "app-context",
+      "ai-context",
+      "collab-context",
+      "user-context",
+      "emoji-dropdown-menu",
+      "mention-dropdown-menu",
+      "slash-dropdown-menu",
+      "drag-context-menu",
+      "ai-menu",
+      "undo-redo-button",
+      "image-upload-button",
+      "color-highlight-popover",
+      "text-align-button",
+      "slash-command-trigger-button",
+      "reset-all-formatting-button",
+      "delete-node-button",
+      "improve-dropdown",
+      "turn-into-dropdown",
+      "color-text-popover",
+      "color-text-button",
+      "color-highlight-button",
+      "ai-ask-button",
+      "duplicate-button",
+      "copy-to-clipboard-button",
+      "link-popover",
+      "mark-button",
+      "move-node-button",
+      "floating-element",
+      "button",
+      "spacer",
+      "sidebar",
+      "toolbar",
+      "image-upload-node",
+      "code-block-node",
+      "blockquote-node",
+      "horizontal-rule-node",
+      "heading-node",
+      "list-node",
+      "image-node",
+      "paragraph-node",
+      "image-node-pro",
+      "ui-state-extension",
+      "sun-icon",
+      "moon-star-icon",
+      "more-vertical-icon",
+      "arrow-left-icon",
+      "tiptap-utils",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-templates/notion-like/page.tsx",
+        "type": "registry:page",
+        "target": "app/notion-like/page.tsx"
+      },
+      {
+        "path": "tiptap-templates/notion-like/components/notion-like-editor-collaboration-users.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/notion-like/components/notion-like-editor-mobile-toolbar.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/notion-like/components/notion-like-editor-header.scss",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/notion-like/components/notion-like-editor-header.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/notion-like/components/notion-like-editor.scss",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/notion-like/components/notion-like-editor.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/notion-like/components/notion-like-editor-toolbar-floating.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/notion-like/components/notion-like-editor-theme-toggle.tsx",
+        "type": "registry:component"
+      },
+      {
+        "path": "tiptap-templates/notion-like/data/content.json",
+        "type": "registry:page",
+        "target": "app/notion-like/data/content.json"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "avatar",
+    "type": "registry:ui-primitive",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/avatar/avatar.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/avatar/avatar.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/avatar/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "badge",
+    "type": "registry:ui-primitive",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/badge/badge-colors.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/badge/badge-group.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/badge/badge.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/badge/badge.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/badge/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "button",
+    "type": "registry:ui-primitive",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "tooltip",
+      "tiptap-utils",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/button/button-colors.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/button/button-group.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/button/button.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/button/button.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/button/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "card",
+    "type": "registry:ui-primitive",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "tiptap-utils",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/card/card.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/card/card.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/card/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "combobox",
+    "type": "registry:ui-primitive",
+    "dependencies": [
+      "@ariakit/react"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "tiptap-utils",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/combobox/combobox.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/combobox/combobox.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/combobox/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "dropdown-menu",
+    "type": "registry:ui-primitive",
+    "dependencies": [
+      "@radix-ui/react-dropdown-menu"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "tiptap-utils",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/dropdown-menu/dropdown-menu.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/dropdown-menu/dropdown-menu.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/dropdown-menu/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "input",
+    "type": "registry:ui-primitive",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "tiptap-utils",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/input/input.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/input/input.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/input/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "label",
+    "type": "registry:ui-primitive",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/label/label.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/label/label.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/label/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "menu",
+    "type": "registry:ui-primitive",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded",
+      "@ariakit/react"
+    ],
+    "registryDependencies": [
+      "styles",
+      "use-on-click-outside",
+      "use-composed-ref",
+      "tiptap-utils",
+      "combobox",
+      "separator",
+      "label"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/menu/menu.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/menu/menu-context.ts",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/menu/menu-hooks.ts",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/menu/menu-types.ts",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/menu/menu-utils.ts",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/menu/menu.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/menu/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "popover",
+    "type": "registry:ui-primitive",
+    "dependencies": [
+      "@radix-ui/react-popover"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/popover/popover.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/popover/popover.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/popover/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "separator",
+    "type": "registry:ui-primitive",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "styles",
+      "tiptap-utils"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/separator/separator.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/separator/separator.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/separator/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "sidebar",
+    "type": "registry:ui-primitive",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "use-mobile",
+      "message-square-icon",
+      "button",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/sidebar/sidebar.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/sidebar/sidebar.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/sidebar/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "spacer",
+    "type": "registry:ui-primitive",
+    "dependencies": [],
+    "registryDependencies": [],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/spacer/spacer.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/spacer/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "textarea-autosize",
+    "type": "registry:ui-primitive",
+    "dependencies": [
+      "react-textarea-autosize"
+    ],
+    "registryDependencies": [
+      "use-isomorphic-layout-effect"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/textarea-autosize/textarea-autosize.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/textarea-autosize/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "toolbar",
+    "type": "registry:ui-primitive",
+    "dependencies": [],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "use-menu-navigation",
+      "use-composed-ref",
+      "tiptap-utils",
+      "separator",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/toolbar/toolbar.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/toolbar/toolbar.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/toolbar/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "tooltip",
+    "type": "registry:ui-primitive",
+    "dependencies": [
+      "@floating-ui/react"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-primitive/tooltip/tooltip.scss",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/tooltip/tooltip.tsx",
+        "type": "registry:ui-primitive"
+      },
+      {
+        "path": "tiptap-ui-primitive/tooltip/index.tsx",
+        "type": "registry:ui-primitive"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "ai-ask-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "@tiptap-pro/extension-ai@3.2.0",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "ui-state-extension",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "ai-sparkles-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/ai-ask-button/ai-ask-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-ask-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-ask-button/use-ai-ask.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "ai-menu",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "is-hotkey",
+      "@tiptap-pro/extension-ai@3.2.0",
+      "@tiptap/extension-emoji",
+      "@tiptap/extensions",
+      "@tiptap/extension-mention"
+    ],
+    "devDependencies": [
+      "@types/is-hotkey"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-ui-editor-state",
+      "tiptap-advanced-utils",
+      "ui-state-extension",
+      "menu",
+      "button",
+      "textarea-autosize",
+      "combobox",
+      "card",
+      "dropdown-menu",
+      "separator",
+      "spacer",
+      "toolbar",
+      "stop-circle-2-icon",
+      "arrow-up-icon",
+      "mic-ai-icon",
+      "ai-sparkles-icon",
+      "x-icon",
+      "refresh-ai-icon",
+      "chevron-right-icon",
+      "summarize-text-icon",
+      "simplify-2-icon",
+      "languages-icon",
+      "text-extend-icon",
+      "text-reduce-icon",
+      "complete-sentence-icon",
+      "smile-ai-icon",
+      "check-ai-icon",
+      "check-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-actions/ai-menu-actions.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-actions/ai-menu-actions.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-actions/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-input/ai-menu-input-hooks.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-input/ai-menu-input-types.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-input/ai-menu-input.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-input/ai-menu-input.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-input/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-items/ai-menu-items-constants.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-items/ai-menu-items-types.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-items/ai-menu-items.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-items/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-hooks.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-types.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu-utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/ai-menu.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/ai-menu/index.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "blockquote-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "blockquote-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/blockquote-button/blockquote-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/blockquote-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/blockquote-button/use-blockquote.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "code-block-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "code-block-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/code-block-button/code-block-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/code-block-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/code-block-button/use-code-block.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "color-highlight-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "@tiptap/extension-highlight",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "highlighter-icon",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/color-highlight-button/color-highlight-button.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/color-highlight-button/color-highlight-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/color-highlight-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/color-highlight-button/use-color-highlight.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "color-highlight-popover",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/extension-highlight"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "use-menu-navigation",
+      "use-tiptap-editor",
+      "use-mobile",
+      "color-highlight-button",
+      "button",
+      "popover",
+      "separator",
+      "card",
+      "ban-icon",
+      "highlighter-icon",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/color-highlight-popover/color-highlight-popover.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/color-highlight-popover/index.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "color-text-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "@tiptap/extension-color",
+      "@tiptap/extension-text-style",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "text-color-small-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/color-text-button/color-text-button.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/color-text-button/color-text-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/color-text-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/color-text-button/use-color-text.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "color-text-popover",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/extension-color",
+      "@tiptap/extension-text-style",
+      "@tiptap/extension-highlight"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-menu-navigation",
+      "color-text-button",
+      "color-highlight-button",
+      "button",
+      "popover",
+      "card",
+      "chevron-down-icon",
+      "tiptap-advanced-utils"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/color-text-popover/color-text-popover.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/color-text-popover/color-text-popover.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/color-text-popover/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/color-text-popover/use-color-text-popover.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "comments",
+    "type": "registry:ui",
+    "dependencies": [
+      "dayjs",
+      "@tiptap/react",
+      "@tiptap-pro/provider",
+      "@tiptap/starter-kit",
+      "@tiptap/extension-mention",
+      "@tiptap/extensions",
+      "@tiptap/extension-emoji"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "app-context",
+      "ai-context",
+      "user-context",
+      "thread-store",
+      "use-tiptap-editor",
+      "use-mobile",
+      "use-ui-editor-state",
+      "trash-icon",
+      "pencil-icon",
+      "ellipsis-icon",
+      "smile-plus-icon",
+      "close-icon",
+      "arrow-right-icon",
+      "tiptap-collab-utils",
+      "mark-button",
+      "emoji-trigger-button",
+      "mention-trigger-button",
+      "link-popover",
+      "emoji-dropdown-menu",
+      "mention-dropdown-menu",
+      "emoji-menu",
+      "floating-element",
+      "button",
+      "spacer",
+      "toolbar",
+      "dropdown-menu",
+      "avatar",
+      "tooltip",
+      "popover",
+      "card",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/comment/comment-bubble.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment/comment-bubbles.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment/comment-bubbles.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment/comment-content.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment/comment-input-floating.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment/comment-input.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment/comment-input.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment/comment-reactions.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment/comment.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment/comment.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment/index.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "comment-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap-pro/provider",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "thread-store",
+      "use-tiptap-editor",
+      "use-ui-editor-state",
+      "use-mobile",
+      "tiptap-utils",
+      "tiptap-collab-utils",
+      "button",
+      "badge",
+      "message-square-plus-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/comment-button/comment-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/comment-button/use-comment.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "copy-anchor-link-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook",
+      "@tiptap/extension-unique-id"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "use-floating-toolbar-visibility",
+      "tiptap-utils",
+      "tiptap-advanced-utils",
+      "button",
+      "badge",
+      "link-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/copy-anchor-link-button/copy-anchor-link-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/copy-anchor-link-button/use-copy-anchor-link.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/copy-anchor-link-button/use-scroll-to-hash.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/copy-anchor-link-button/index.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "copy-to-clipboard-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "clipboard-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/copy-to-clipboard-button/copy-to-clipboard-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/copy-to-clipboard-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/copy-to-clipboard-button/use-copy-to-clipboard.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "delete-node-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "trash-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/delete-node-button/delete-node-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/delete-node-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/delete-node-button/use-delete-node.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "drag-context-menu",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "@tiptap/extension-drag-handle-react"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "use-ui-editor-state",
+      "use-floating-toolbar-visibility",
+      "tiptap-collab-utils",
+      "button",
+      "spacer",
+      "menu",
+      "combobox",
+      "separator",
+      "grip-vertical-icon",
+      "paint-bucket-icon",
+      "chevron-right-icon",
+      "repeat-2-icon",
+      "ai-sparkles-icon",
+      "copy-icon",
+      "blockquote-icon",
+      "code-block-icon",
+      "heading-one-icon",
+      "link-icon",
+      "list-icon",
+      "sun-icon",
+      "trash-icon",
+      "type-icon",
+      "heading-three-icon",
+      "heading-two-icon",
+      "list-todo-icon",
+      "list-ordered-icon",
+      "text-color-small-icon",
+      "message-square-plus-icon",
+      "duplicate-button",
+      "copy-to-clipboard-button",
+      "delete-node-button",
+      "copy-anchor-link-button",
+      "reset-all-formatting-button",
+      "slash-command-trigger-button",
+      "color-text-button",
+      "color-highlight-button",
+      "ai-ask-button",
+      "text-button",
+      "heading-button",
+      "list-button",
+      "blockquote-button",
+      "code-block-button",
+      "image-download-button",
+      "turn-into-dropdown",
+      "color-text-popover"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/drag-context-menu/drag-context-menu-hooks.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/drag-context-menu/drag-context-menu-types.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/drag-context-menu/drag-context-menu.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/drag-context-menu/index.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "duplicate-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "copy-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/duplicate-button/duplicate-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/duplicate-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/duplicate-button/use-duplicate.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "emoji-dropdown-menu",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/extension-emoji"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "suggestion-menu",
+      "emoji-menu",
+      "button",
+      "card",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/emoji-dropdown-menu/emoji-dropdown-menu.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/emoji-dropdown-menu/index.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "emoji-menu",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/extension-emoji"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "use-menu-navigation",
+      "tiptap-collab-utils",
+      "button",
+      "input",
+      "card",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/emoji-menu/emoji-menu-utils.ts",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/emoji-menu/emoji-menu.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/emoji-menu/emoji-menu.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/emoji-menu/index.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "emoji-trigger-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "smile-plus-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/emoji-trigger-button/emoji-trigger-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/emoji-trigger-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/emoji-trigger-button/use-emoji-trigger.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "heading-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "heading-one-icon",
+      "heading-two-icon",
+      "heading-three-icon",
+      "heading-four-icon",
+      "heading-five-icon",
+      "heading-six-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/heading-button/heading-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/heading-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/heading-button/use-heading.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "heading-dropdown-menu",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "chevron-down-icon",
+      "heading-icon",
+      "tiptap-utils",
+      "heading-button",
+      "button",
+      "dropdown-menu",
+      "card"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/heading-dropdown-menu/heading-dropdown-menu.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/heading-dropdown-menu/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/heading-dropdown-menu/use-heading-dropdown-menu.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "image-align-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "align-center-vertical-icon",
+      "align-end-vertical-icon",
+      "align-start-vertical-icon",
+      "tiptap-utils",
+      "button",
+      "badge"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/image-align-button/image-align-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/image-align-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/image-align-button/use-image-align.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "image-download-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "arrow-down-to-line-icon",
+      "tiptap-utils",
+      "button",
+      "badge"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/image-download-button/image-download-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/image-download-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/image-download-button/use-image-download.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "image-upload-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/extension-image"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "button",
+      "image-plus-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/image-upload-button/image-upload-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/image-upload-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/image-upload-button/use-image-upload.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "improve-dropdown",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap-pro/extension-ai@3.2.0"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "button",
+      "dropdown-menu",
+      "card",
+      "separator",
+      "mic-ai-icon",
+      "ai-sparkles-icon",
+      "check-ai-icon",
+      "text-extend-icon",
+      "text-reduce-icon",
+      "simplify-2-icon",
+      "smile-ai-icon",
+      "complete-sentence-icon",
+      "summarize-text-icon",
+      "languages-icon",
+      "chevron-right-icon",
+      "ai-menu",
+      "ai-ask-button"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/improve-dropdown/improve-dropdown.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/improve-dropdown/index.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "link-popover",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "popover",
+      "separator",
+      "input",
+      "card",
+      "link-icon",
+      "trash-icon",
+      "corner-down-left-icon",
+      "external-link-icon",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/link-popover/link-popover.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/link-popover/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/link-popover/use-link-popover.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "list-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "@tiptap/extension-list",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "list-icon",
+      "list-todo-icon",
+      "list-ordered-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/list-button/list-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/list-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/list-button/use-list.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "list-dropdown-menu",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/extension-list"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "tiptap-utils",
+      "list-button",
+      "button",
+      "dropdown-menu",
+      "card",
+      "list-icon",
+      "chevron-down-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/list-dropdown-menu/list-dropdown-menu.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/list-dropdown-menu/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/list-dropdown-menu/use-list-dropdown-menu.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "mark-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/extension-subscript",
+      "@tiptap/extension-superscript",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "bold-icon",
+      "code2-icon",
+      "italic-icon",
+      "strike-icon",
+      "subscript-icon",
+      "underline-icon",
+      "superscript-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/mark-button/mark-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/mark-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/mark-button/use-mark.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "mathematics-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/extension-mathematics",
+      "katex",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "tiptap-advanced-utils",
+      "button",
+      "badge",
+      "sigma-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/mathematics-button/mathematics-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/mathematics-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/mathematics-button/use-mathematics.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "mention-dropdown-menu",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "tiptap-collab-utils",
+      "suggestion-menu",
+      "avatar",
+      "button",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/mention-dropdown-menu/mention-dropdown-menu.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/mention-dropdown-menu/index.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "mention-trigger-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "at-sign-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/mention-trigger-button/mention-trigger-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/mention-trigger-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/mention-trigger-button/use-mention-trigger.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "move-node-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-advanced-utils",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "align-top-icon",
+      "align-bottom-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/move-node-button/move-node-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/move-node-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/move-node-button/use-move-node.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "reset-all-formatting-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "rotate-ccw-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/reset-all-formatting-button/reset-all-formatting-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/reset-all-formatting-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/reset-all-formatting-button/use-reset-all-formatting.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "slash-command-trigger-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "tiptap-utils",
+      "button",
+      "badge",
+      "plus-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/slash-command-trigger-button/slash-command-trigger-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/slash-command-trigger-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/slash-command-trigger-button/use-slash-command-trigger.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "slash-dropdown-menu",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "tiptap-utils",
+      "tiptap-advanced-utils",
+      "tiptap-collab-utils",
+      "suggestion-menu",
+      "emoji-trigger-button",
+      "mention-trigger-button",
+      "button",
+      "separator",
+      "card",
+      "code-block-icon",
+      "heading-one-icon",
+      "heading-two-icon",
+      "heading-three-icon",
+      "image-icon",
+      "list-icon",
+      "list-ordered-icon",
+      "blockquote-icon",
+      "list-todo-icon",
+      "ai-sparkles-icon",
+      "minus-icon",
+      "type-icon",
+      "at-sign-icon",
+      "smile-plus-icon",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/slash-dropdown-menu/slash-dropdown-menu.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/slash-dropdown-menu/slash-dropdown-menu.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/slash-dropdown-menu/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/slash-dropdown-menu/use-slash-dropdown-menu.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "text-align-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/extension-text-align",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "button",
+      "badge",
+      "tiptap-utils",
+      "align-left-icon",
+      "align-right-icon",
+      "align-center-icon",
+      "align-justify-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/text-align-button/text-align-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/text-align-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/text-align-button/use-text-align.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "text-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "button",
+      "badge",
+      "tiptap-utils",
+      "type-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/text-button/text-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/text-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/text-button/use-text.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "thread",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "@floating-ui/react",
+      "@tiptap-pro/provider"
+    ],
+    "devDependencies": [
+      "sass",
+      "sass-embedded"
+    ],
+    "registryDependencies": [
+      "app-context",
+      "ai-context",
+      "collab-context",
+      "thread-store",
+      "user-context",
+      "use-mobile",
+      "use-thread-handlers",
+      "use-tiptap-editor",
+      "use-thread-position",
+      "use-thread-sync",
+      "comments",
+      "check-icon",
+      "chevron-left-icon",
+      "chevron-right-icon",
+      "circle-check-icon",
+      "close-icon",
+      "ellipsis-icon",
+      "link-icon",
+      "rotate-ccw-icon",
+      "trash-icon",
+      "floating-element",
+      "button",
+      "badge",
+      "dropdown-menu",
+      "card",
+      "styles"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/thread/thread-floating.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/thread/thread-footer.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/thread/thread-header.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/thread/thread.scss",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/thread/thread.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/thread/index.tsx",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "turn-into-dropdown",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "text-button",
+      "heading-button",
+      "list-button",
+      "blockquote-button",
+      "code-block-button",
+      "button",
+      "dropdown-menu",
+      "card",
+      "chevron-down-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/turn-into-dropdown/turn-into-dropdown.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/turn-into-dropdown/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/turn-into-dropdown/use-turn-into-dropdown.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "undo-redo-button",
+    "type": "registry:ui",
+    "dependencies": [
+      "@tiptap/react",
+      "react-hotkeys-hook"
+    ],
+    "registryDependencies": [
+      "use-tiptap-editor",
+      "use-mobile",
+      "button",
+      "badge",
+      "undo2-icon",
+      "redo2-icon"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui/undo-redo-button/undo-redo-button.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/undo-redo-button/index.tsx",
+        "type": "registry:ui"
+      },
+      {
+        "path": "tiptap-ui/undo-redo-button/use-undo-redo.ts",
+        "type": "registry:ui"
+      }
+    ],
+    "plans": [
+      "light",
+      "open-source"
+    ]
+  },
+  {
+    "name": "floating-element",
+    "type": "registry:ui-utils",
+    "dependencies": [
+      "@tiptap/react",
+      "@floating-ui/react"
+    ],
+    "registryDependencies": [
+      "tiptap-collab-utils",
+      "use-tiptap-editor",
+      "use-floating-element"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-utils/floating-element/floating-element-utils.ts",
+        "type": "registry:ui-utils"
+      },
+      {
+        "path": "tiptap-ui-utils/floating-element/floating-element.tsx",
+        "type": "registry:ui-utils"
+      },
+      {
+        "path": "tiptap-ui-utils/floating-element/index.tsx",
+        "type": "registry:ui-utils"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  },
+  {
+    "name": "suggestion-menu",
+    "type": "registry:ui-utils",
+    "dependencies": [
+      "@tiptap/react",
+      "@tiptap/pm",
+      "@tiptap/suggestion",
+      "@floating-ui/react"
+    ],
+    "registryDependencies": [
+      "use-floating-element",
+      "use-menu-navigation",
+      "use-tiptap-editor"
+    ],
+    "files": [
+      {
+        "path": "tiptap-ui-utils/suggestion-menu/suggestion-menu-types.ts",
+        "type": "registry:ui-utils"
+      },
+      {
+        "path": "tiptap-ui-utils/suggestion-menu/suggestion-menu-utils.ts",
+        "type": "registry:ui-utils"
+      },
+      {
+        "path": "tiptap-ui-utils/suggestion-menu/suggestion-menu.tsx",
+        "type": "registry:ui-utils"
+      },
+      {
+        "path": "tiptap-ui-utils/suggestion-menu/index.tsx",
+        "type": "registry:ui-utils"
+      }
+    ],
+    "plans": [
+      "start",
+      "enterprise",
+      "team",
+      "growth"
+    ]
+  }
+]
