@@ -43,7 +43,7 @@ export interface AIOperation {
   type: 'continue' | 'polish' | 'summarize' | 'expand' | 'custom';
   prompt?: string;
   context?: string;
-  options?: Record<string, any>;
+  options?: Record<string, string | number | boolean>;
 }
 
 // 编辑器状态类型
@@ -56,9 +56,12 @@ export interface EditorState {
 
 // 图片生成配置类型
 export interface ImageGenerationConfig {
+  provider?: 'openai' | 'stability' | 'midjourney';
   apiKey?: string;
+  openaiApiKey?: string;
   baseUrl?: string;
   model?: string;
+  dalleModel?: string;
   imageSize?: string;
   imageQuality?: string;
   imageStyle?: string;

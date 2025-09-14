@@ -7,7 +7,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { Palette, Type, Highlighter } from 'lucide-react';
+import { Type, Highlighter } from 'lucide-react';
 
 interface ColorGroupProps {
   editor: Editor;

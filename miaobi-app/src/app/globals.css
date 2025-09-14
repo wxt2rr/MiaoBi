@@ -120,3 +120,35 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* 图片调整大小样式 */
+.image-resize-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.image-resize-container:hover .resize-handle > div {
+  opacity: 1 !important;
+}
+
+.resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.resize-handle > div {
+  pointer-events: auto;
+}
+
+.resize-handle > div:hover {
+  background: linear-gradient(135deg, #1f2937, #0f172a) !important;
+  transform: scale(1.1);
+}
+
+.resize-handle > div:active {
+  background: linear-gradient(135deg, #111827, #0c0a09) !important;
+  transform: scale(0.95);
+}

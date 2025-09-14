@@ -148,6 +148,7 @@ export const TextSelectionPopupExtension = Extension.create<TextSelectionPopupOp
     let popup: HTMLDivElement | null = null;
     let root: Root | null = null;
     let currentSelection: { from: number; to: number; text: string } | null = null;
+    let resizeHandler: (() => void) | null = null;
 
     const hidePopup = () => {
       if (popup && root) {
@@ -156,6 +157,12 @@ export const TextSelectionPopupExtension = Extension.create<TextSelectionPopupOp
         popup = null;
         root = null;
         currentSelection = null;
+        
+        // 移除resize监听器
+        if (resizeHandler) {
+          window.removeEventListener('resize', resizeHandler);
+          resizeHandler = null;
+        }
       }
     };
 
@@ -185,10 +192,141 @@ export const TextSelectionPopupExtension = Extension.create<TextSelectionPopupOp
       
       document.body.appendChild(popup);
 
-      // 计算位置
+      // 智能定位算法
       const coords = view.coordsAtPos(to);
-      popup.style.left = `${coords.left}px`;
-      popup.style.top = `${coords.bottom + 5}px`;
+      const selectionCoords = view.coordsAtPos(from);
+      
+      // 检查坐标是否有效，如果无效则使用备用方案
+      let finalCoords = coords;
+      if (coords.left === 0 && coords.top === 0) {
+        // 使用 from 坐标作为备用方案，创建新的坐标对象
+        const fallbackCoords = view.coordsAtPos(from);
+        // 根据选中文本长度估算宽度
+        const textWidth = Math.max(text.length * 12, 50); // 每个字符约12px宽度
+        finalCoords = {
+          left: fallbackCoords.left + textWidth,
+          top: fallbackCoords.top,
+          bottom: fallbackCoords.bottom,
+          right: fallbackCoords.right + textWidth
+        } as DOMRect;
+      }
+      
+      // 调试信息（开发环境）
+      if (process.env.NODE_ENV === 'development') {
+        console.log('弹框定位:', {
+          text: text.substring(0, 20) + (text.length > 20 ? '...' : ''),
+          position: { x: finalCoords.left, y: finalCoords.top }
+        });
+      }
+      
+      // 弹框尺寸（预估）
+      const popupWidth = 384; // w-96 = 24rem = 384px
+      const popupHeight = 400; // 预估高度
+      const offset = 8; // 与选中文本的间距
+      
+      // 获取视口尺寸
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      // 计算选中文本的中心位置
+      const selectionCenterX = (finalCoords.left + selectionCoords.left) / 2;
+      const selectionTop = Math.min(finalCoords.top, selectionCoords.top);
+      const selectionBottom = Math.max(finalCoords.bottom, selectionCoords.bottom);
+      
+      // 考虑页面滚动
+      const scrollX = window.scrollX || window.pageXOffset;
+      const scrollY = window.scrollY || window.pageYOffset;
+      
+      // 获取编辑器容器的边界，确保弹框在编辑器区域内
+      const editorElement = document.querySelector('.ProseMirror');
+      const editorRect = editorElement?.getBoundingClientRect();
+      
+      // 优先在选中文本下方显示
+      let popupX = selectionCenterX - popupWidth / 2;
+      let popupY = selectionBottom + offset;
+      
+      // 水平边界检查 - 限制在编辑器区域内
+      if (editorRect) {
+        // 确保弹框不超出编辑器左边界
+        if (popupX < editorRect.left + 16) {
+          popupX = editorRect.left + 16;
+        }
+        // 确保弹框不超出编辑器右边界
+        if (popupX + popupWidth > editorRect.right - 16) {
+          popupX = editorRect.right - popupWidth - 16;
+        }
+      } else {
+        // 如果没有找到编辑器，使用原来的逻辑
+        if (popupX < 16) {
+          popupX = 16; // 左边距
+        } else if (popupX + popupWidth > viewportWidth - 16) {
+          popupX = viewportWidth - popupWidth - 16; // 右边距
+        }
+      }
+      
+      // 垂直边界检查 - 如果下方空间不够，显示在上方
+      if (popupY + popupHeight > viewportHeight - 16) {
+        popupY = selectionTop - popupHeight - offset;
+        
+        // 如果上方也不够，则居中显示
+        if (popupY < 16) {
+          popupY = Math.max(16, (viewportHeight - popupHeight) / 2);
+        }
+      }
+      
+      // 最终位置计算完成
+      
+      // 应用位置
+      popup.style.left = `${popupX}px`;
+      popup.style.top = `${popupY}px`;
+
+      // 添加窗口大小变化监听，重新定位弹框
+      resizeHandler = () => {
+        if (popup && currentSelection) {
+          const newCoords = view.coordsAtPos(currentSelection.to);
+          const newSelectionCoords = view.coordsAtPos(currentSelection.from);
+          
+          const selectionCenterX = (newCoords.left + newSelectionCoords.left) / 2;
+          const selectionTop = Math.min(newCoords.top, newSelectionCoords.top);
+          const selectionBottom = Math.max(newCoords.bottom, newSelectionCoords.bottom);
+          
+          let newPopupX = selectionCenterX - popupWidth / 2;
+          let newPopupY = selectionBottom + offset;
+          
+          // 获取编辑器容器的边界
+          const editorElement = document.querySelector('.ProseMirror');
+          const editorRect = editorElement?.getBoundingClientRect();
+          
+          // 重新计算边界 - 限制在编辑器区域内
+          if (editorRect) {
+            if (newPopupX < editorRect.left + 16) {
+              newPopupX = editorRect.left + 16;
+            }
+            if (newPopupX + popupWidth > editorRect.right - 16) {
+              newPopupX = editorRect.right - popupWidth - 16;
+            }
+          } else {
+            if (newPopupX < 16) {
+              newPopupX = 16;
+            } else if (newPopupX + popupWidth > window.innerWidth - 16) {
+              newPopupX = window.innerWidth - popupWidth - 16;
+            }
+          }
+          
+          if (newPopupY + popupHeight > window.innerHeight - 16) {
+            newPopupY = selectionTop - popupHeight - offset;
+            if (newPopupY < 16) {
+              newPopupY = Math.max(16, (window.innerHeight - popupHeight) / 2);
+            }
+          }
+          
+          popup.style.left = `${newPopupX}px`;
+          popup.style.top = `${newPopupY}px`;
+        }
+      };
+
+      // 监听窗口大小变化
+      window.addEventListener('resize', resizeHandler);
 
       // 创建React根并渲染
       root = createRoot(popup);
@@ -200,7 +338,9 @@ export const TextSelectionPopupExtension = Extension.create<TextSelectionPopupOp
           onGenerateImage={async (prompt: string, type: 'illustration' | 'diagram') => {
             if (currentSelection) {
               // 方法1: 尝试从window对象获取handleImageGeneration函数
-              const globalHandleImageGeneration = (window as any).handleImageGeneration;
+              const globalHandleImageGeneration = (window as Window & { 
+                handleImageGeneration?: (selectedText: string, prompt: string, type: 'illustration' | 'diagram') => Promise<void>
+              }).handleImageGeneration;
               
               if (globalHandleImageGeneration && typeof globalHandleImageGeneration === 'function') {
                 try {

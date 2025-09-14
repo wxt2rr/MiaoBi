@@ -113,7 +113,7 @@ export class ImageGenerationService {
     };
   }
 
-  private async generateWithStableDiffusion(prompt: string): Promise<ImageGenerationResult> {
+  private async generateWithStableDiffusion(): Promise<ImageGenerationResult> {
     // TODO: 实现 Stable Diffusion API 调用
     throw new Error('Stable Diffusion 支持即将推出');
   }

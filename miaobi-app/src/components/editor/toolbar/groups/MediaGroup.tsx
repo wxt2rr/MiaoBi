@@ -14,9 +14,10 @@ import { useState, useRef } from 'react';
 
 interface MediaGroupProps {
   editor: Editor;
+  showOnlyImageUpload?: boolean;
 }
 
-export function MediaGroup({ editor }: MediaGroupProps) {
+export function MediaGroup({ editor, showOnlyImageUpload = false }: MediaGroupProps) {
   const [imageUrl, setImageUrl] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -41,6 +42,29 @@ export function MediaGroup({ editor }: MediaGroupProps) {
       console.log('文件上传功能待实现:', file);
     }
   };
+
+  if (showOnlyImageUpload) {
+    // 只显示上传图片按钮
+    return (
+      <div className="flex items-center gap-1">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => fileInputRef.current?.click()}
+          aria-label="上传图片"
+        >
+          <Upload className="h-4 w-4" />
+        </Button>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          onChange={handleFileUpload}
+          className="hidden"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center gap-1">

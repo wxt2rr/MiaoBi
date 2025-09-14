@@ -31,26 +31,33 @@ import CodeBlock from '@tiptap/extension-code-block';
 import Color from '@tiptap/extension-color';
 import { TextStyle } from '@tiptap/extension-text-style';
 import TextAlign from '@tiptap/extension-text-align';
+import Typography from '@tiptap/extension-typography';
 
 import { useEditorStore } from '@/stores/editor-store';
 import { useAI } from '@/hooks/useAI';
 import { DirectSlashCommandsExtension } from './extensions/DirectSlashCommands';
 import AITypingMark from './extensions/AITypingMark';
 import { TextSelectionPopupExtension } from './extensions/TextSelectionPopup';
+import ImageResize from './extensions/ImageResize';
 import { EditorToolbar } from './toolbar/EditorToolbar';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { Sparkles } from 'lucide-react';
 import useImageGeneration from '@/hooks/useImageGeneration';
+import { markdownService } from '@/services/markdown-service';
 
 export default function TipTapEditor() {
   const { content, setContent, saveCurrentArticle } = useEditorStore();
   const { continueWriting, error } = useAI();
-  const { generateImage, blobToDataUrl, isLoading: isGeneratingImage } = useImageGeneration();
+  const { generateImage, blobToDataUrl } = useImageGeneration();
   const [ghostText, setGhostText] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
-  const [typingPosition, setTypingPosition] = useState<number | null>(null);
   const [aiContentRange, setAiContentRange] = useState<{ from: number; to: number } | null>(null);
+  const [isImporting, setIsImporting] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+  const [isMarkdownMode, setIsMarkdownMode] = useState(false);
+  const [markdownContent, setMarkdownContent] = useState('');
   const editorRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // 获取AI内容末尾的DOM位置
   const getAIEndPosition = () => {
@@ -113,6 +120,9 @@ export default function TipTapEditor() {
       }),
       Image.configure({
         inline: true,
+        HTMLAttributes: {
+          class: 'max-w-full h-auto',
+        },
       }),
       Table.configure({
         resizable: true,
@@ -127,8 +137,12 @@ export default function TipTapEditor() {
       TextAlign.configure({
         types: ['heading', 'paragraph'],
       }),
+      // Typography 扩展 - 支持 Markdown 样式转换
+      Typography,
       // AI打字标记
       AITypingMark,
+      // 图片调整大小
+      ImageResize,
       // 文本选择弹框 - 先使用空函数，后续通过useEffect更新
       TextSelectionPopupExtension.configure({
         onGenerateImage: () => {
@@ -208,9 +222,128 @@ export default function TipTapEditor() {
   // 将handleImageGeneration函数暴露到全局window对象
   useEffect(() => {
     if (handleImageGeneration) {
-      (window as any).handleImageGeneration = handleImageGeneration;
+      (window as Window & { handleImageGeneration?: typeof handleImageGeneration }).handleImageGeneration = handleImageGeneration;
     }
   }, [handleImageGeneration]);
+
+  // Markdown 导入处理
+  const handleMarkdownImport = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      setIsImporting(true);
+      
+      // 验证文件
+      const isValid = await markdownService.validateMarkdownFile(file);
+      if (!isValid) {
+        alert('请选择有效的 Markdown 文件（.md 格式，大小不超过 10MB）');
+        return;
+      }
+
+      // 读取文件内容
+      const markdownContent = await markdownService.readMarkdownFile(file);
+      
+      if (isMarkdownMode) {
+        // 如果在 Markdown 模式，直接设置到 Markdown 编辑器
+        setMarkdownContent(markdownContent);
+        alert('Markdown 文件导入成功！');
+      } else {
+        // 如果在富文本模式，转换为 HTML 并设置到富文本编辑器
+        const htmlContent = markdownService.markdownToHtml(markdownContent);
+        
+        if (editor) {
+          editor.commands.setContent(htmlContent);
+          setContent(htmlContent);
+        }
+        alert('Markdown 文件导入成功！');
+      }
+    } catch (error) {
+      console.error('导入失败:', error);
+      alert('导入失败，请检查文件格式是否正确');
+    } finally {
+      setIsImporting(false);
+      // 清空文件输入
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  }, [editor, setContent, isMarkdownMode]);
+
+  // Markdown 导出处理
+  const handleMarkdownExport = useCallback(async () => {
+    try {
+      setIsExporting(true);
+      
+      let contentToExport: string;
+      
+      if (isMarkdownMode) {
+        // 如果在 Markdown 模式，直接使用当前 Markdown 内容
+        contentToExport = markdownContent;
+      } else {
+        // 如果在富文本模式，获取编辑器内容并转换为 Markdown
+        if (!editor) return;
+        
+        const htmlContent = editor.getHTML();
+        contentToExport = markdownService.htmlToMarkdown(htmlContent);
+      }
+      
+      // 生成文件名
+      const now = new Date();
+      const timestamp = now.toISOString().slice(0, 19).replace(/:/g, '-');
+      const filename = `document-${timestamp}.md`;
+      
+      // 下载文件
+      markdownService.downloadMarkdownFile(contentToExport, filename);
+      
+      alert('Markdown 文件导出成功！');
+    } catch (error) {
+      console.error('导出失败:', error);
+      alert('导出失败，请重试');
+    } finally {
+      setIsExporting(false);
+    }
+  }, [editor, isMarkdownMode, markdownContent]);
+
+  // 触发文件选择
+  const triggerFileImport = useCallback(() => {
+    fileInputRef.current?.click();
+  }, []);
+
+  // 切换到 Markdown 模式
+  const switchToMarkdownMode = useCallback(() => {
+    if (!editor) return;
+    
+    try {
+      const htmlContent = editor.getHTML();
+      const markdown = markdownService.htmlToMarkdown(htmlContent);
+      setMarkdownContent(markdown);
+      setIsMarkdownMode(true);
+    } catch (error) {
+      console.error('切换到 Markdown 模式失败:', error);
+      alert('切换到 Markdown 模式失败');
+    }
+  }, [editor]);
+
+  // 切换到富文本模式
+  const switchToRichTextMode = useCallback(() => {
+    if (!editor) return;
+    
+    try {
+      const htmlContent = markdownService.markdownToHtml(markdownContent);
+      editor.commands.setContent(htmlContent);
+      setContent(htmlContent);
+      setIsMarkdownMode(false);
+    } catch (error) {
+      console.error('切换到富文本模式失败:', error);
+      alert('切换到富文本模式失败');
+    }
+  }, [editor, markdownContent, setContent]);
+
+  // 更新 Markdown 内容
+  const updateMarkdownContent = useCallback((newContent: string) => {
+    setMarkdownContent(newContent);
+  }, []);
 
   // 更新TextSelectionPopupExtension的配置
   useEffect(() => {
@@ -248,7 +381,6 @@ export default function TipTapEditor() {
         
         // 获取当前光标位置（在所有case中都会用到）
         const currentPos = editor.state.selection.from;
-        setTypingPosition(currentPos);
         
         switch (type) {
           case 'ai-continue':
@@ -257,9 +389,7 @@ export default function TipTapEditor() {
             let aiText = '';
             let isFirstChunk = true;
             
-            // 创建一个临时的span来标记AI生成的内容
-            const aiStartMarker = `<span class="ai-typing" style="color: #9CA3AF; background-color: #F3F4F6;">`;
-            const aiEndMarker = `</span>`;
+            // AI续写功能 - 实现打字效果
             
             // 记录AI内容开始位置
             const aiStartPos = currentPos;
@@ -360,7 +490,6 @@ export default function TipTapEditor() {
         editor.commands.unsetAITyping();
         
         setGhostText('');
-        setTypingPosition(null);
         setAiContentRange(null);
       } else if (event.key === 'Escape' && ghostText && aiContentRange) {
         event.preventDefault();
@@ -369,7 +498,6 @@ export default function TipTapEditor() {
         editor.commands.deleteRange({ from: aiContentRange.from, to: aiContentRange.to });
         
         setGhostText('');
-        setTypingPosition(null);
         setAiContentRange(null);
       }
     };
@@ -408,21 +536,47 @@ export default function TipTapEditor() {
       return (
     <div className="h-full flex flex-col relative">
       {/* 工具栏 */}
-      <EditorToolbar editor={editor} />
+      <EditorToolbar 
+        editor={editor}
+        isMarkdownMode={isMarkdownMode}
+        onModeChange={(mode) => {
+          if (mode === 'markdown') {
+            switchToMarkdownMode();
+          } else {
+            switchToRichTextMode();
+          }
+        }}
+        onImportMarkdown={triggerFileImport}
+        onExportMarkdown={handleMarkdownExport}
+        isImporting={isImporting}
+        isExporting={isExporting}
+      />
 
       <div className="flex-1 overflow-y-auto">
-        <EditorContent 
-          editor={editor}
-          className="h-full"
-          ref={editorRef}
-        />
+        {isMarkdownMode ? (
+          <div className="h-full p-4">
+            <textarea
+              value={markdownContent}
+              onChange={(e) => updateMarkdownContent(e.target.value)}
+              className="w-full h-full resize-none border-none outline-none font-mono text-sm leading-relaxed"
+              placeholder="在这里编辑 Markdown 内容..."
+              style={{ fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace' }}
+            />
+          </div>
+        ) : (
+          <EditorContent 
+            editor={editor}
+            className="h-full"
+            ref={editorRef}
+          />
+        )}
         
-        {/* AI打字完成后的确认提示 - 显示在AI内容末尾 */}
-        {(() => {
+        {/* AI打字完成后的确认提示 - 只在富文本模式下显示 */}
+        {!isMarkdownMode && (() => {
           const aiEndPos = getAIEndPosition();
           return ghostText && aiEndPos && (
             <div 
-              className="fixed bg-white border border-gray-200 rounded-lg shadow-lg p-2 z-50 pointer-events-none"
+              className="fixed bg-card border border-border rounded-lg shadow-lg p-3 z-50 pointer-events-none"
               style={{
                 left: `${aiEndPos.left}px`,
                 top: `${aiEndPos.top}px`,
@@ -430,12 +584,12 @@ export default function TipTapEditor() {
               }}
             >
               <div className="flex items-center gap-2 text-sm">
-                <Sparkles className="w-4 h-4 text-blue-500" />
-                <span>AI续写完成</span>
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="text-card-foreground font-medium">AI续写完成</span>
               </div>
-              <div className="text-xs text-gray-500 mt-1">
-                <kbd className="px-1 py-0.5 bg-gray-100 rounded text-xs">Tab</kbd> 确定 | 
-                <kbd className="px-1 py-0.5 bg-gray-100 rounded text-xs ml-1">Esc</kbd> 取消
+              <div className="text-xs text-muted-foreground mt-2">
+                <kbd className="px-2 py-1 bg-muted border border-border rounded text-xs font-mono">Tab</kbd> 确定 | 
+                <kbd className="px-2 py-1 bg-muted border border-border rounded text-xs font-mono ml-1">Esc</kbd> 取消
               </div>
             </div>
           );
@@ -445,22 +599,41 @@ export default function TipTapEditor() {
       {/* 编辑器状态栏 */}
       <div className="p-2 border-t bg-muted/50 text-xs text-muted-foreground flex items-center justify-between">
         <div>
-          字数: {editor.storage.characterCount?.characters() || 0} | 
-          按 / 使用AI命令 | 
-          选中文字查看润色选项
-          {isGenerating && (
-            <span className="ml-2 text-primary">
-              <Sparkles className="h-3 w-3 inline animate-spin" />
-              AI思考中...
-            </span>
-          )}
-          {error && (
-            <span className="ml-2 text-destructive">
-              错误: {error}
-            </span>
+          {isMarkdownMode ? (
+            <>
+              Markdown 模式 | 
+              字数: {markdownContent.length} | 
+              行数: {markdownContent.split('\n').length}
+            </>
+          ) : (
+            <>
+              字数: {editor.storage.characterCount?.characters() || 0} | 
+              按 / 使用AI命令 | 
+              选中文字查看润色选项
+              {isGenerating && (
+                <span className="ml-2 text-primary">
+                  <Sparkles className="h-3 w-3 inline animate-spin" />
+                  AI思考中...
+                </span>
+              )}
+              {error && (
+                <span className="ml-2 text-destructive">
+                  错误: {error}
+                </span>
+              )}
+            </>
           )}
         </div>
       </div>
+
+      {/* 隐藏的文件输入 */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept=".md,.markdown"
+        onChange={handleMarkdownImport}
+        className="hidden"
+      />
     </div>
   );
 } 

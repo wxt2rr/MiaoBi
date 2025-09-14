@@ -1,7 +1,7 @@
 import { Mark, mergeAttributes } from '@tiptap/core';
 
 export interface AITypingOptions {
-  HTMLAttributes: Record<string, any>;
+  HTMLAttributes: Record<string, string | number | boolean>;
 }
 
 declare module '@tiptap/core' {
@@ -36,8 +36,8 @@ export const AITypingMark = Mark.create<AITypingOptions>({
     return {
       class: {
         default: 'ai-typing',
-        parseHTML: element => element.getAttribute('class'),
-        renderHTML: attributes => {
+        parseHTML: (element: HTMLElement) => element.getAttribute('class'),
+        renderHTML: (attributes: { class?: string }) => {
           if (!attributes.class) {
             return {};
           }
@@ -48,8 +48,8 @@ export const AITypingMark = Mark.create<AITypingOptions>({
       },
       style: {
         default: 'color: #9CA3AF; background-color: #F3F4F6;',
-        parseHTML: element => element.getAttribute('style'),
-        renderHTML: attributes => {
+        parseHTML: (element: HTMLElement) => element.getAttribute('style'),
+        renderHTML: (attributes: { style?: string }) => {
           if (!attributes.style) {
             return {};
           }

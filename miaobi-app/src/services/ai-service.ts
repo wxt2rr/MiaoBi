@@ -1,5 +1,5 @@
 import type { AIConfig } from '@/types';
-import { useSettingsStore } from '@/stores/settings-store';
+// import { useSettingsStore } from '@/stores/settings-store';
 
 export class AIService {
   private config: AIConfig;
@@ -96,7 +96,7 @@ export class AIService {
               if (content) {
                 yield content;
               }
-            } catch (e) {
+            } catch {
               // 忽略解析错误的行
               continue;
             }

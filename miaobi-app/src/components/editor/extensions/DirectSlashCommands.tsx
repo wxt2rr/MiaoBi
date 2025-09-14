@@ -39,7 +39,7 @@ function SlashMenu({
   if (showAskAI) {
     return (
       <div 
-        className="fixed bg-white border border-gray-200 rounded-lg shadow-xl p-4 min-w-[320px] max-w-[400px]"
+        className="fixed bg-card border border-border rounded-lg shadow-lg p-4 min-w-[320px] max-w-[400px]"
         style={{ 
           left: position.x, 
           top: position.y + 8, 
@@ -47,8 +47,8 @@ function SlashMenu({
         }}
       >
         <div className="flex items-center gap-2 mb-3">
-          <MessageCircle className="w-4 h-4 text-blue-500" />
-          <span className="font-medium text-gray-900 text-sm">问AI</span>
+          <MessageCircle className="w-4 h-4 text-primary" />
+          <span className="font-medium text-card-foreground text-sm">问AI</span>
         </div>
         
         <div className="space-y-3">
@@ -63,21 +63,21 @@ function SlashMenu({
                 onAskAI();
               }
             }}
-            className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 text-sm border border-input rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
             autoFocus
           />
           
           <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-muted-foreground">
               Enter 发送 • Esc 取消
             </span>
             <button
               onClick={onAskAI}
               disabled={!question.trim() || isAsking}
-              className="px-3 py-1 text-sm bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1"
+              className="px-3 py-1 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1"
             >
               {isAsking ? (
-                <div className="w-3 h-3 border border-white border-t-transparent rounded-full animate-spin" />
+                <div className="w-3 h-3 border border-primary-foreground border-t-transparent rounded-full animate-spin" />
               ) : (
                 <>
                   <Send className="w-3 h-3" />
@@ -93,7 +93,7 @@ function SlashMenu({
 
   return (
     <div 
-      className="fixed bg-white border border-gray-200 rounded-lg shadow-xl p-2 min-w-[240px] max-w-[280px]"
+      className="fixed bg-card border border-border rounded-lg shadow-lg p-2 min-w-[240px] max-w-[280px]"
       style={{ 
         left: position.x, 
         top: position.y + 8, 
@@ -105,17 +105,17 @@ function SlashMenu({
           key={index}
           className={`flex items-center gap-3 p-3 rounded-md cursor-pointer transition-colors ${
             index === selectedIndex 
-              ? 'bg-blue-50 border border-blue-200' 
-              : 'hover:bg-gray-50'
+              ? 'bg-accent border border-accent-foreground/20' 
+              : 'hover:bg-accent hover:text-accent-foreground'
           }`}
           onClick={() => onSelect(index)}
         >
-          <div className="flex-shrink-0 w-7 h-7 flex items-center justify-center bg-gray-100 rounded-md">
-            <item.icon className="w-4 h-4 text-gray-600" />
+          <div className="flex-shrink-0 w-7 h-7 flex items-center justify-center bg-muted rounded-md">
+            <item.icon className="w-4 h-4 text-muted-foreground" />
           </div>
           <div className="flex-1 min-w-0">
-            <div className="font-medium text-gray-900 text-sm">{item.title}</div>
-            <div className="text-xs text-gray-500 truncate">{item.description}</div>
+            <div className="font-medium text-card-foreground text-sm">{item.title}</div>
+            <div className="text-xs text-muted-foreground truncate">{item.description}</div>
           </div>
         </div>
       ))}
@@ -133,6 +133,7 @@ export const DirectSlashCommandsExtension = Extension.create({
         pluginKey: new PluginKey('directSlashCommands'),
         command: ({ editor, range, props }: { editor: Editor; range: { from: number; to: number }; props: CommandItem }) => {
           // 处理命令
+          console.log('Command executed:', { editor, range, props });
         },
       },
     };
