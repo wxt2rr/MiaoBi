@@ -50,68 +50,76 @@ export const ImageResize = Extension.create<ImageResizeOptions>({
                   imageElement.style.maxWidth = '100%';
                   imageElement.style.height = 'auto';
                   
-                  // 应用保存的尺寸
-                  const applyDimensions = () => {
-                    if (node.attrs.width) {
-                      imageElement.style.width = `${node.attrs.width}px`;
-                      imageElement.style.maxWidth = 'none';
-                    }
-                    if (node.attrs.height) {
-                      imageElement.style.height = `${node.attrs.height}px`;
-                    }
-                  };
-                  
-                  // 立即应用尺寸（如果图片已加载）
-                  if (imageElement.complete) {
-                    applyDimensions();
-                  } else {
-                    // 如果图片未加载，等待加载完成
-                    imageElement.onload = applyDimensions;
+                  // 直接设置图片的样式属性，确保尺寸保持
+                  if (node.attrs.width) {
+                    imageElement.style.width = `${node.attrs.width}px`;
+                    imageElement.style.maxWidth = 'none';
+                    imageElement.setAttribute('data-width', node.attrs.width.toString());
+                  }
+                  if (node.attrs.height) {
+                    imageElement.style.height = `${node.attrs.height}px`;
+                    imageElement.setAttribute('data-height', node.attrs.height.toString());
                   }
                   
-                  // 使用 setTimeout 确保 DOM 更新后应用尺寸
-                  setTimeout(applyDimensions, 0);
+                  // 设置容器的尺寸，确保整体尺寸保持
+                  if (node.attrs.width) {
+                    container.style.width = `${node.attrs.width}px`;
+                  }
+                  if (node.attrs.height) {
+                    container.style.height = `${node.attrs.height}px`;
+                  }
+                  
+                  // 使用 CSS 变量来保持尺寸
+                  if (node.attrs.width || node.attrs.height) {
+                    container.style.setProperty('--image-width', node.attrs.width ? `${node.attrs.width}px` : 'auto');
+                    container.style.setProperty('--image-height', node.attrs.height ? `${node.attrs.height}px` : 'auto');
+                  }
                   
                   // 创建调整大小的控制点 - 使用更明显的样式
                   const resizeHandle = document.createElement('div');
                   resizeHandle.className = 'resize-handle';
-                  resizeHandle.innerHTML = `
-                    <div style="
-                      position: absolute;
-                      bottom: -2px;
-                      right: -2px;
-                      width: 16px;
-                      height: 16px;
-                      background: linear-gradient(135deg, #374151, #111827);
-                      border: 2px solid white;
-                      border-radius: 4px;
-                      cursor: se-resize;
-                      opacity: 0;
-                      transition: opacity 0.2s;
-                      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                    ">
-                      <div style="
-                        width: 6px;
-                        height: 6px;
-                        background: white;
-                        border-radius: 1px;
-                        transform: rotate(45deg);
-                      "></div>
-                    </div>
+                  
+                  // 创建控制点元素
+                  const handleElement = document.createElement('div');
+                  handleElement.style.cssText = `
+                    position: absolute;
+                    bottom: -2px;
+                    right: -2px;
+                    width: 16px;
+                    height: 16px;
+                    background: linear-gradient(135deg, #374151, #111827);
+                    border: 2px solid white;
+                    border-radius: 4px;
+                    cursor: se-resize;
+                    opacity: 0;
+                    transition: opacity 0.2s;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1000;
                   `;
+                  
+                  // 创建内部指示器
+                  const indicator = document.createElement('div');
+                  indicator.style.cssText = `
+                    width: 6px;
+                    height: 6px;
+                    background: white;
+                    border-radius: 1px;
+                    transform: rotate(45deg);
+                  `;
+                  
+                  handleElement.appendChild(indicator);
+                  resizeHandle.appendChild(handleElement);
                   
                   // 鼠标悬停时显示控制点
                   container.addEventListener('mouseenter', () => {
-                    const handle = resizeHandle.querySelector('div') as HTMLElement;
-                    if (handle) handle.style.opacity = '1';
+                    handleElement.style.opacity = '1';
                   });
                   
                   container.addEventListener('mouseleave', () => {
-                    const handle = resizeHandle.querySelector('div') as HTMLElement;
-                    if (handle) handle.style.opacity = '0';
+                    handleElement.style.opacity = '0';
                   });
                   
                   // 调整大小功能
@@ -131,9 +139,12 @@ export const ImageResize = Extension.create<ImageResizeOptions>({
                     return null;
                   };
                   
-                  resizeHandle.addEventListener('mousedown', (e) => {
+                  // 绑定 mousedown 事件到控制点元素
+                  handleElement.addEventListener('mousedown', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    
+                    console.log('开始调整图片大小'); // 调试日志
                     
                     isResizing = true;
                     startX = e.clientX;

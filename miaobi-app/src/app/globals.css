@@ -128,6 +128,25 @@
   max-width: 100%;
 }
 
+/* 强制保持图片尺寸 */
+.image-resize-container img {
+  width: var(--image-width, auto) !important;
+  height: var(--image-height, auto) !important;
+  max-width: none !important;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+/* 当有 data 属性时强制应用尺寸 */
+.image-resize-container[data-width] img {
+  width: attr(data-width) !important;
+  max-width: none !important;
+}
+
+.image-resize-container[data-height] img {
+  height: attr(data-height) !important;
+}
+
 .image-resize-container:hover .resize-handle > div {
   opacity: 1 !important;
 }

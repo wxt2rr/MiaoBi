@@ -1,35 +1,44 @@
 'use client';
 
-import { useEditorStore } from '@/stores/editor-store';
-import { ExportService } from '@/services/export-service';
-import { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
+import { PreviewHeader } from './PreviewHeader';
+import { PreviewContent } from './PreviewContent';
+import { PreviewSidebar } from './PreviewSidebar';
+import { usePreviewStore } from '@/stores/previewStore';
+import { loadSavedTheme } from '@/utils/themeManager';
+import { cn } from '@/lib/utils';
 
-export default function PreviewPanel() {
-  const { content } = useEditorStore();
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+interface PreviewPanelProps {
+  content: string;
+  className?: string;
+}
 
+export const PreviewPanel: React.FC<PreviewPanelProps> = ({ 
+  content, 
+  className = '' 
+}) => {
+  const { currentTheme } = usePreviewStore();
+
+  // 初始化主题
   useEffect(() => {
-    if (iframeRef.current) {
-      // 使用ExportService生成预览HTML
-      const previewHTML = ExportService.generatePreviewHTML(content);
-
-      // 使用srcdoc属性而不是data URL，避免sandbox问题
-      const iframe = iframeRef.current;
-      iframe.srcdoc = previewHTML;
-    }
-  }, [content]);
+    loadSavedTheme();
+  }, []);
 
   return (
-    <div className="h-full bg-gray-100 p-2">
-      <div className="h-full bg-white rounded-lg overflow-hidden shadow-sm">
-        <iframe
-          ref={iframeRef}
-          className="w-full h-full border-0"
-          title="微信预览"
-          sandbox="allow-same-origin"
-          loading="lazy"
-        />
+    <div className={cn("flex flex-col h-full bg-background", className)}>
+      {/* 顶部操作栏 - 简洁、功能明确 */}
+      <PreviewHeader />
+      
+      {/* 主体区域 - 内容为王 */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* 预览内容 - 占据主要视觉空间 */}
+        <div className="flex-1 overflow-hidden">
+          <PreviewContent />
+        </div>
+        
+        {/* 侧边栏 - 收纳次要功能 */}
+        <PreviewSidebar />
       </div>
     </div>
   );
-} 
+};

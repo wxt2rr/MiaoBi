@@ -21,20 +21,93 @@ export interface AIConfig {
 export interface ThemeConfig {
   id: string;
   name: string;
+  description?: string;
+  category: 'business' | 'personal' | 'creative' | 'minimal';
+  isDefault?: boolean;
+  isCustom?: boolean;
+  
+  // 颜色系统
   colors: {
-    primary: string;
-    secondary: string;
-    background: string;
-    text: string;
-    accent: string;
+    primary: string;        // 主色调
+    secondary: string;      // 辅助色
+    accent: string;         // 强调色
+    background: string;     // 背景色
+    surface: string;        // 表面色
+    text: {
+      primary: string;      // 主文本色
+      secondary: string;    // 次要文本色
+      muted: string;        // 弱化文本色
+    };
+    border: string;         // 边框色
+    success?: string;       // 成功色
+    warning?: string;       // 警告色
+    error?: string;         // 错误色
   };
+  
+  // 字体系统
   fonts: {
-    heading: string;
-    body: string;
+    heading: {
+      family: string;
+      weight: number;
+      size: {
+        h1: string;
+        h2: string;
+        h3: string;
+        h4: string;
+      };
+    };
+    body: {
+      family: string;
+      weight: number;
+      size: string;
+      lineHeight: number;
+    };
+    code: {
+      family: string;
+      size: string;
+    };
   };
+  
+  // 间距系统
   spacing: {
-    paragraph: number;
-    heading: number;
+    paragraph: number;      // 段落间距
+    heading: number;        // 标题间距
+    section: number;        // 章节间距
+    element: number;        // 元素间距
+  };
+  
+  // 组件样式
+  components: {
+    blockquote: {
+      borderColor: string;
+      backgroundColor: string;
+      padding: string;
+    };
+    code: {
+      backgroundColor: string;
+      borderColor: string;
+      borderRadius: string;
+    };
+    link: {
+      color: string;
+      hoverColor: string;
+    };
+  };
+  
+  // 微信兼容性配置
+  wechat: {
+    fontSize: number;       // 微信推荐字号
+    lineHeight: number;     // 微信推荐行高
+    maxWidth: string;       // 最大宽度
+  };
+  
+  // 预览样式配置
+  preview: {
+    backgroundColor: string;
+    borderRadius: string;
+    padding: string;
+    boxShadow: string;
+    borderColor?: string;
   };
 }
 

@@ -1,4 +1,5 @@
 import DOMPurify from 'dompurify';
+import type { ThemeConfig } from '@/types';
 
 interface ExportOptions {
   removeComments?: boolean;
@@ -49,6 +50,16 @@ export class ExportService {
       inlineStyles = true,
       removeScripts = true
     } = options;
+
+    // 检查是否在浏览器环境中
+    if (typeof window === 'undefined') {
+      // 服务端渲染时，返回简单的HTML清理
+      return html
+        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+        .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '')
+        .replace(/on\w+="[^"]*"/gi, '')
+        .replace(/javascript:/gi, '');
+    }
 
     // 配置DOMPurify
     const config = {
@@ -106,13 +117,19 @@ export class ExportService {
    * 为微信复制生成最终HTML
    */
   static generateWechatHTML(content: string): string {
-    // 净化HTML
-    const sanitized = this.sanitizeHTML(content);
+    // 如果传入的已经是渲染后的HTML，直接使用
+    // 否则进行净化处理
+    let processedContent = content;
+    
+    // 检查是否需要净化（如果包含script标签等危险内容）
+    if (content.includes('<script') || content.includes('javascript:')) {
+      processedContent = this.sanitizeHTML(content);
+    }
 
     // 包装在微信友好的容器中
     const wechatHTML = `
 <section style="font-size: 16px; color: #333; line-height: 1.6; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif;">
-${sanitized}
+${processedContent}
 </section>`.trim();
 
     return wechatHTML;
@@ -280,5 +297,17 @@ ${sanitized}
 
     console.log('最终预览HTML长度:', result.length);
     return result;
+  }
+
+  /**
+   * 生成带主题的微信HTML（用于复制）
+   */
+  static generateWechatHTMLWithTheme(content: string, theme: ThemeConfig): string {
+    const sanitized = this.sanitizeHTML(content, { inlineStyles: true });
+    
+    return `
+<section class="wechat-article" style="font-family: ${theme.fonts.body.family}; font-size: ${theme.wechat.fontSize}px; line-height: ${theme.wechat.lineHeight}; color: ${theme.colors.text.primary}; background-color: ${theme.colors.background}; max-width: ${theme.wechat.maxWidth}; margin: 0 auto; padding: 20px;">
+  ${sanitized}
+</section>`.trim();
   }
 } 

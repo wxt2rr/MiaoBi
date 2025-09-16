@@ -247,6 +247,16 @@ export default function TipTapEditor() {
       if (isMarkdownMode) {
         // 如果在 Markdown 模式，直接设置到 Markdown 编辑器
         setMarkdownContent(markdownContent);
+        
+        // 同步更新到编辑器 store，确保预览区能实时更新
+        try {
+          const htmlContent = markdownService.markdownToHtml(markdownContent);
+          setContent(htmlContent);
+        } catch (error) {
+          console.error('Markdown 转 HTML 失败:', error);
+          setContent(markdownContent);
+        }
+        
         alert('Markdown 文件导入成功！');
       } else {
         // 如果在富文本模式，转换为 HTML 并设置到富文本编辑器
@@ -255,6 +265,13 @@ export default function TipTapEditor() {
         if (editor) {
           editor.commands.setContent(htmlContent);
           setContent(htmlContent);
+          
+          // 触发预览区自动刷新
+          setTimeout(() => {
+            // 通过触发内容变化来刷新预览
+            const event = new Event('contentChanged');
+            window.dispatchEvent(event);
+          }, 100);
         }
         alert('Markdown 文件导入成功！');
       }
@@ -319,11 +336,14 @@ export default function TipTapEditor() {
       const markdown = markdownService.htmlToMarkdown(htmlContent);
       setMarkdownContent(markdown);
       setIsMarkdownMode(true);
+      
+      // 确保预览区显示最新的 Markdown 转换后的 HTML 内容
+      setContent(htmlContent);
     } catch (error) {
       console.error('切换到 Markdown 模式失败:', error);
       alert('切换到 Markdown 模式失败');
     }
-  }, [editor]);
+  }, [editor, setContent]);
 
   // 切换到富文本模式
   const switchToRichTextMode = useCallback(() => {
@@ -343,7 +363,18 @@ export default function TipTapEditor() {
   // 更新 Markdown 内容
   const updateMarkdownContent = useCallback((newContent: string) => {
     setMarkdownContent(newContent);
-  }, []);
+    
+    // 同步更新到编辑器 store，确保预览区能实时更新
+    // 将 Markdown 转换为 HTML 并更新到 store
+    try {
+      const htmlContent = markdownService.markdownToHtml(newContent);
+      setContent(htmlContent);
+    } catch (error) {
+      console.error('Markdown 转 HTML 失败:', error);
+      // 如果转换失败，至少更新原始内容
+      setContent(newContent);
+    }
+  }, [setContent]);
 
   // 更新TextSelectionPopupExtension的配置
   useEffect(() => {
@@ -552,7 +583,7 @@ export default function TipTapEditor() {
         isExporting={isExporting}
       />
 
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto" id="editor-scroll-container">
         {isMarkdownMode ? (
           <div className="h-full p-4">
             <textarea
@@ -566,7 +597,7 @@ export default function TipTapEditor() {
         ) : (
           <EditorContent 
             editor={editor}
-            className="h-full"
+            className="h-full overflow-y-auto"
             ref={editorRef}
           />
         )}
