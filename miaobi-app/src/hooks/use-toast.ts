@@ -1,65 +1,35 @@
 import { useState, useCallback } from 'react';
 
-interface Toast {
+export interface Toast {
   id: string;
   title?: string;
   description?: string;
-  variant?: 'default' | 'destructive' | 'success';
+  variant?: 'default' | 'destructive';
 }
-
-interface ToastState {
-  toasts: Toast[];
-}
-
-let toastCount = 0;
 
 export function useToast() {
-  const [state, setState] = useState<ToastState>({ toasts: [] });
+  const [toasts, setToasts] = useState<Toast[]>([]);
 
-  const toast = useCallback(
-    ({ title, description, variant = 'default' }: Omit<Toast, 'id'>) => {
-      const id = (++toastCount).toString();
-      const newToast: Toast = { id, title, description, variant };
-
-      setState((prevState) => ({
-        toasts: [...prevState.toasts, newToast],
-      }));
-
-      // 自动移除toast
-      setTimeout(() => {
-        setState((prevState) => ({
-          toasts: prevState.toasts.filter((t) => t.id !== id),
-        }));
-      }, 3000);
-
-      return { id };
-    },
-    []
-  );
-
-  const dismiss = useCallback((toastId?: string) => {
-    setState((prevState) => ({
-      toasts: toastId
-        ? prevState.toasts.filter((t) => t.id !== toastId)
-        : [],
-    }));
+  const toast = useCallback(({ title, description, variant = 'default' }: Omit<Toast, 'id'>) => {
+    const id = Math.random().toString(36).substr(2, 9);
+    const newToast: Toast = { id, title, description, variant };
+    
+    setToasts(prev => [...prev, newToast]);
+    
+    // 自动移除toast
+    setTimeout(() => {
+      setToasts(prev => prev.filter(t => t.id !== id));
+    }, 3000);
+    
+    return {
+      id,
+      dismiss: () => setToasts(prev => prev.filter(t => t.id !== id))
+    };
   }, []);
 
   return {
     toast,
-    dismiss,
-    toasts: state.toasts,
+    toasts,
+    dismiss: (id: string) => setToasts(prev => prev.filter(t => t.id !== id))
   };
 }
-
-// 简化的toast函数
-export const toast = {
-  success: (message: string) => {
-    // 简单的成功提示实现
-    console.log('✅ Success:', message);
-  },
-  error: (message: string) => {
-    // 简单的错误提示实现
-    console.error('❌ Error:', message);
-  },
-};

@@ -49,11 +49,11 @@ export function parseMarkdown(markdown: string, sanitize: boolean = true): strin
   html = html.replace(/<p><\/p>/g, '');
   
   // 处理列表
-  html = html.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
+  html = html.replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>');
   html = html.replace(/<\/ul>\s*<ul>/g, '');
   
   // 处理引用
-  html = html.replace(/(<blockquote>.*<\/blockquote>)/gs, '<div class="blockquote-wrapper">$1</div>');
+  html = html.replace(/(<blockquote>[\s\S]*?<\/blockquote>)/g, '<div class="blockquote-wrapper">$1</div>');
 
   return html;
 }

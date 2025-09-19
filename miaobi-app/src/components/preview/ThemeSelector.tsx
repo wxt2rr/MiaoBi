@@ -25,23 +25,17 @@ export function ThemeSelector() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48 max-h-80 overflow-y-auto">
-        {themes.map((theme) => (
+        {themes.map((theme, index) => (
           <DropdownMenuItem
             key={theme.id}
-            onClick={() => setCurrentTheme(theme.id)}
+            onClick={() => setCurrentTheme(index)}
             className="flex items-center gap-2 cursor-pointer"
-            title={theme.description}
           >
             <div className={`w-3 h-3 rounded-full ${theme.color} flex-shrink-0`} />
             <div className="flex-1 min-w-0">
               <span className="text-sm font-medium truncate">{theme.name}</span>
-              {theme.description && (
-                <div className="text-xs text-muted-foreground truncate">
-                  {theme.description}
-                </div>
-              )}
             </div>
-            {currentTheme === theme.id && (
+            {currentTheme === index && (
               <Check className="h-3 w-3 ml-auto flex-shrink-0 text-primary" />
             )}
           </DropdownMenuItem>

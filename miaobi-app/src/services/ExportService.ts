@@ -1,13 +1,19 @@
+import { useEditorStore } from '@/stores/editor-store';
+
 export class ExportService {
   /**
    * 生成微信公众号格式的HTML
    */
   static generateWechatHTML(): string {
-    // 获取预览区域的HTML内容
-    const previewElement = document.querySelector('.markdown-preview');
+    // 获取预览区域的HTML内容 - 使用更精确的选择器
+    const previewElement = document.querySelector('#preview-scroll-container') || 
+                          document.querySelector('.preview-content') ||
+                          document.querySelector('.markdown-preview');
     if (!previewElement) {
-      console.warn('预览区域未找到');
-      return '';
+      console.warn('预览区域未找到，尝试从编辑器获取内容');
+      // 如果预览区域未找到，尝试从store获取内容
+      const { content } = useEditorStore.getState();
+      return content || '';
     }
 
     // 获取渲染后的HTML内容
@@ -47,10 +53,13 @@ export class ExportService {
    * 生成知乎格式的HTML
    */
   static generateZhihuHTML(): string {
-    const previewElement = document.querySelector('.markdown-preview');
+    const previewElement = document.querySelector('#preview-scroll-container') || 
+                          document.querySelector('.preview-content') ||
+                          document.querySelector('.markdown-preview');
     if (!previewElement) {
-      console.warn('预览区域未找到');
-      return '';
+      console.warn('预览区域未找到，尝试从编辑器获取内容');
+      const { content } = useEditorStore.getState();
+      return content || '';
     }
 
     const htmlContent = previewElement.innerHTML;
@@ -89,10 +98,13 @@ export class ExportService {
    * 生成掘金格式的HTML
    */
   static generateJuejinHTML(): string {
-    const previewElement = document.querySelector('.markdown-preview');
+    const previewElement = document.querySelector('#preview-scroll-container') || 
+                          document.querySelector('.preview-content') ||
+                          document.querySelector('.markdown-preview');
     if (!previewElement) {
-      console.warn('预览区域未找到');
-      return '';
+      console.warn('预览区域未找到，尝试从编辑器获取内容');
+      const { content } = useEditorStore.getState();
+      return content || '';
     }
 
     const htmlContent = previewElement.innerHTML;
@@ -131,10 +143,14 @@ export class ExportService {
    * 生成小红书格式的纯文本（去除HTML标签）
    */
   static generateXiaohongshuText(): string {
-    const previewElement = document.querySelector('.markdown-preview');
+    const previewElement = document.querySelector('#preview-scroll-container') || 
+                          document.querySelector('.preview-content') ||
+                          document.querySelector('.markdown-preview');
     if (!previewElement) {
-      console.warn('预览区域未找到');
-      return '';
+      console.warn('预览区域未找到，尝试从编辑器获取内容');
+      const { content } = useEditorStore.getState();
+      // 简单去除HTML标签
+      return content.replace(/<[^>]*>/g, '') || '';
     }
 
     // 获取纯文本内容，去除HTML标签

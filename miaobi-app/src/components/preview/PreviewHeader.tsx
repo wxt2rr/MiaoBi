@@ -7,6 +7,10 @@ import { Separator } from '@/components/ui/separator';
 import { usePreviewStore } from '@/stores/previewStore';
 import { Monitor, Smartphone, Eye } from 'lucide-react';
 import { ThemeSelector } from './ThemeSelector';
+import { CodeThemeSelector } from './CodeThemeSelector';
+import { FontThemeSelector } from './FontThemeSelector';
+import { PlatformPublishDropdown } from './PlatformPublishDropdown';
+import { FileExportDropdown } from './FileExportDropdown';
 
 export const PreviewHeader: React.FC = () => {
   const { previewMode, setPreviewMode } = usePreviewStore();
@@ -36,6 +40,18 @@ export const PreviewHeader: React.FC = () => {
       <div className="flex items-center gap-3">
         {/* 主题样式选择器 */}
         <ThemeSelector />
+        
+        {/* 代码主题选择器 */}
+        <CodeThemeSelector />
+          <FontThemeSelector />
+        
+        <Separator orientation="vertical" className="h-4" />
+        
+        {/* 平台发布 */}
+        <PlatformPublishDropdown />
+        
+        {/* 文件导出 */}
+        <FileExportDropdown />
         
         <Separator orientation="vertical" className="h-4" />
         

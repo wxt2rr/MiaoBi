@@ -89,7 +89,7 @@ const ThemesDemo: React.FC = () => {
                     : 'bg-white text-gray-700 border-gray-300 hover:border-blue-300 hover:bg-blue-50'
                   }
                 `}
-                title={theme.description}
+                title={theme.name}
               >
                 {theme.name}
               </button>
@@ -97,9 +97,6 @@ const ThemesDemo: React.FC = () => {
           </div>
           <div className="mt-4 text-sm text-gray-600">
             当前主题：<span className="font-medium">{themes.find(t => t.id === selectedTheme)?.name}</span>
-            {themes.find(t => t.id === selectedTheme)?.description && (
-              <span className="ml-2">- {themes.find(t => t.id === selectedTheme)?.description}</span>
-            )}
           </div>
         </div>
 
@@ -135,8 +132,8 @@ const ThemesDemo: React.FC = () => {
                 onClick={() => setSelectedTheme(theme.id)}
               >
                 <h4 className="font-medium text-gray-900">{theme.name}</h4>
-                <p className="text-sm text-gray-600 mt-1">{theme.description || '暂无描述'}</p>
                 <div className="text-xs text-gray-500 mt-2">ID: {theme.id}</div>
+                <div className="text-xs text-gray-500">ThemeId: {theme.themeId}</div>
               </div>
             ))}
           </div>

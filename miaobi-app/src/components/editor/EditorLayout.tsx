@@ -3,20 +3,20 @@
 import { useState, useRef, useEffect } from 'react';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
-import { Settings, FileText, Eye, Copy, CheckCircle, Menu } from 'lucide-react';
+import { Settings, FileText, Eye, Menu } from 'lucide-react';
 import TipTapEditor from './EditorWrapper';
 import PreviewPanel from '../preview/PreviewWrapper';
 import SettingsDialog from '../settings/SettingsDialog';
-import { ExportService } from '@/services/export-service';
 import { useEditorStore } from '@/stores/editor-store';
 import { useImprovedSyncScroll } from '@/hooks/useImprovedSyncScroll';
-import { copyHtmlToClipboard } from '@/utils/clipboard';
+import { codeThemeManager } from '@/utils/codeThemeManager';
+
 
 export default function EditorLayout() {
   const { content } = useEditorStore();
   const [showPreview, setShowPreview] = useState(true);
   const [showArticles, setShowArticles] = useState(false);
-  const [copyStatus, setCopyStatus] = useState<'idle' | 'copying' | 'success' | 'error'>('idle');
+
   
   // 同步滚动相关的refs
   const editorScrollRef = useRef<HTMLDivElement | null>(null);
@@ -28,6 +28,11 @@ export default function EditorLayout() {
     previewRef: previewScrollRef,
     enabled: showPreview
   });
+
+  // 初始化代码主题管理器
+  useEffect(() => {
+    codeThemeManager.initialize();
+  }, []);
 
   // 设置滚动容器引用
   useEffect(() => {
@@ -42,39 +47,7 @@ export default function EditorLayout() {
     }
   }, [showPreview]);
 
-  const handleCopyForWechat = async () => {
-    if (!content.trim()) {
-      setCopyStatus('error');
-      setTimeout(() => setCopyStatus('idle'), 2000);
-      return;
-    }
 
-    setCopyStatus('copying');
-    
-    try {
-      // 从预览面板的DOM中获取已渲染的HTML内容
-      const previewContainer = document.getElementById('nice');
-      if (!previewContainer) {
-        throw new Error('预览容器未找到');
-      }
-      
-      // 获取预览容器中的HTML内容
-      const renderedHTML = previewContainer.innerHTML;
-      
-      // 使用已渲染的HTML生成微信格式
-      const wechatHTML = ExportService.generateWechatHTML(renderedHTML);
-      
-      // 使用富文本复制功能，确保复制的是HTML而不是纯文本
-      await copyHtmlToClipboard(wechatHTML);
-      
-      setCopyStatus('success');
-      setTimeout(() => setCopyStatus('idle'), 3000);
-    } catch (error) {
-      console.error('复制失败:', error);
-      setCopyStatus('error');
-      setTimeout(() => setCopyStatus('idle'), 2000);
-    }
-  };
 
   return (
     <div className="h-full flex flex-col bg-background">
@@ -95,23 +68,7 @@ export default function EditorLayout() {
             {showPreview ? '隐藏预览' : '显示预览'}
           </Button>
           
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleCopyForWechat}
-            disabled={copyStatus === 'copying' || !content.trim()}
-          >
-            {copyStatus === 'success' ? (
-              <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
-            ) : (
-              <Copy className="h-4 w-4 mr-2" />
-            )}
-            {copyStatus === 'copying' && '复制中...'}
-            {copyStatus === 'success' && '复制成功!'}
-            {copyStatus === 'error' && '复制失败'}
-            {copyStatus === 'idle' && '为微信复制'}
-          </Button>
-          
+
           <SettingsDialog>
             <Button variant="outline" size="sm">
               <Settings className="h-4 w-4" />

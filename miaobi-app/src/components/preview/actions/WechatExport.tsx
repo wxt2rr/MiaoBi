@@ -3,7 +3,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { MessageSquare, Copy, CheckCircle } from 'lucide-react';
-import { ExportService } from '@/services/ExportService';
+import { CopyService } from '@/services/copy-service';
 
 export const WechatExport: React.FC = () => {
   const [isExporting, setIsExporting] = React.useState(false);
@@ -12,16 +12,15 @@ export const WechatExport: React.FC = () => {
   const handleExport = async () => {
     try {
       setIsExporting(true);
-      const htmlContent = ExportService.generateWechatHTML();
       
-      if (htmlContent) {
-        await navigator.clipboard.writeText(htmlContent);
-        setIsSuccess(true);
-        alert("微信格式内容已复制到剪贴板，可直接粘贴到微信公众号编辑器");
-        
-        // 重置成功状态
-        setTimeout(() => setIsSuccess(false), 2000);
-      }
+      // 使用CopyService的微信复制方法，这会正确处理HTML和样式内联
+      await CopyService.copyForWechat();
+      
+      setIsSuccess(true);
+      alert("微信格式内容已复制到剪贴板，可直接粘贴到微信公众号编辑器");
+      
+      // 重置成功状态
+      setTimeout(() => setIsSuccess(false), 2000);
     } catch (error) {
       console.error('微信导出失败:', error);
       alert("复制失败，请重试或检查浏览器权限");

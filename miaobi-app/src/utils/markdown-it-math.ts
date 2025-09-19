@@ -2,17 +2,15 @@
 import MarkdownIt from 'markdown-it';
 
 const mathPlugin = (md: MarkdownIt) => {
-  const mathInline = (state: any, start: number, end: number, silent: boolean) => {
+  const mathInline = (state: any, start: number, end: number, silent: boolean): boolean => {
     let pos = start;
-    let found = false;
     let token;
-    let res;
 
     if (state.src[pos] !== "$") {
       return false;
     }
 
-    res = state.src.slice(++pos);
+    const res = state.src.slice(++pos);
     const match = res.match(/^\$(.+?)\$/);
     if (!match) {
       return false;
@@ -28,9 +26,9 @@ const mathPlugin = (md: MarkdownIt) => {
     return true;
   };
 
-  const mathBlock = (state: any, start: number, end: number, silent: boolean) => {
+  const mathBlock = (state: any, start: number, end: number, silent: boolean): boolean => {
     let pos = state.bMarks[start] + state.tShift[start];
-    let max = state.eMarks[start];
+    const max = state.eMarks[start];
     let token;
 
     if (pos + 2 > max) {
@@ -46,7 +44,7 @@ const mathPlugin = (md: MarkdownIt) => {
 
     if (firstLine.trim().slice(-2) === "$$") {
       firstLine = firstLine.trim().slice(0, -2);
-      let found = true;
+      const found = true;
       
       if (!silent) {
         token = state.push("math_block", "math", 0);
@@ -63,8 +61,8 @@ const mathPlugin = (md: MarkdownIt) => {
     return false;
   };
 
-  md.inline.ruler.after("escape", "math_inline", mathInline);
-  md.block.ruler.after("blockquote", "math_block", mathBlock, {
+  md.inline.ruler.after("escape", "math_inline", mathInline as any);
+  md.block.ruler.after("blockquote", "math_block", mathBlock as any, {
     alt: ["paragraph", "reference", "blockquote", "list"]
   });
 

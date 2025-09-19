@@ -1,103 +1,139 @@
-// 主题索引文件
-import { basicTheme } from './basic';
-import { wechatTheme } from './wechat';
-import { purpleTheme } from './purple';
-import { tenderTheme } from './tender';
-import { redTheme } from './red';
-import { blueTheme } from './blue';
-import { greenTheme } from './green';
-import { orangeTheme } from './orange';
-import { fullstackTheme } from './fullstack';
-import { minimalBlackTheme } from './minimal-black';
-import { gridBlackTheme } from './grid-black';
-import { geekBlackTheme } from './geek-black';
+// 主题索引文件 - 与Markdown2Html-main项目完全对齐
+import { normalTheme } from './normal';
+import { oneTheme } from './one';
+import { twoTheme } from './two';
+import { threeTheme } from './three';
+import { fourTheme } from './four';
+import { fiveTheme } from './five';
+import { sixTheme } from './six';
+import { sevenTheme } from './seven';
+import { eightTheme } from './eight';
+import { wghTheme } from './wgh';
+import { tenTheme } from './ten';
+import { elevenTheme } from './eleven';
+import { twelveTheme } from './twelve';
+import { thirteenTheme } from './thirteen';
+import { fourteenTheme } from './fourteen';
+import { fifteenTheme } from './fifteen';
+import { nineTheme } from './nine';
 import { customTheme } from './custom';
 
 export interface ThemeInfo {
   id: string;
   name: string;
   css: string;
-  description?: string;
+  themeId: string; // 与原项目保持一致的themeId字段
 }
 
+// 完全按照原项目Theme.js的themeList顺序和名称
 export const themes: ThemeInfo[] = [
   {
-    id: 'basic',
+    id: 'normal',
+    themeId: 'normal',
     name: '默认主题',
-    css: basicTheme,
-    description: '简洁的默认样式'
+    css: normalTheme
   },
   {
-    id: 'wechat',
-    name: '微信风格',
-    css: wechatTheme,
-    description: '适合微信公众号的样式'
+    id: 'one',
+    themeId: '1',
+    name: '橙心',
+    css: oneTheme
   },
   {
-    id: 'purple',
-    name: '炫紫',
-    css: purpleTheme,
-    description: '优雅的紫色主题'
+    id: 'two',
+    themeId: '2',
+    name: '姹紫',
+    css: twoTheme
   },
   {
-    id: 'tender',
+    id: 'three',
+    themeId: '3',
     name: '嫩青',
-    css: tenderTheme,
-    description: '清新的青色主题'
+    css: threeTheme
   },
   {
-    id: 'red',
-    name: '红绯',
-    css: redTheme,
-    description: '热情的红色主题'
-  },
-  {
-    id: 'blue',
-    name: '蓝墨',
-    css: blueTheme,
-    description: '沉稳的蓝色主题'
-  },
-  {
-    id: 'green',
+    id: 'four',
+    themeId: '4',
     name: '绿意',
-    css: greenTheme,
-    description: '自然的绿色主题'
+    css: fourTheme
   },
   {
-    id: 'orange',
-    name: '橙心风',
-    css: orangeTheme,
-    description: '温暖的橙色主题'
+    id: 'five',
+    themeId: '5',
+    name: '红绯',
+    css: fiveTheme
   },
   {
-    id: 'fullstack',
-    name: '全栈蓝',
-    css: fullstackTheme,
-    description: '专业的全栈开发主题'
+    id: 'six',
+    themeId: '6',
+    name: '蓝莹',
+    css: sixTheme
   },
   {
-    id: 'minimal-black',
-    name: '极简黑',
-    css: minimalBlackTheme,
-    description: '简约的黑色主题'
+    id: 'seven',
+    themeId: '7',
+    name: '兰青',
+    css: sevenTheme
   },
   {
-    id: 'grid-black',
+    id: 'eight',
+    themeId: '8',
+    name: '山吹',
+    css: eightTheme
+  },
+  {
+    id: 'wgh',
+    themeId: '9',
     name: '网格黑',
-    css: gridBlackTheme,
-    description: '网格背景的黑色主题'
+    css: wghTheme
   },
   {
-    id: 'geek-black',
+    id: 'ten',
+    themeId: '10',
     name: '极客黑',
-    css: geekBlackTheme,
-    description: '极客风格的黑色主题'
+    css: tenTheme
+  },
+  {
+    id: 'eleven',
+    themeId: '11',
+    name: '蔷薇紫',
+    css: elevenTheme
+  },
+  {
+    id: 'twelve',
+    themeId: '12',
+    name: '萌绿风',
+    css: twelveTheme
+  },
+  {
+    id: 'thirteen',
+    themeId: '13',
+    name: '全栈蓝',
+    css: thirteenTheme
+  },
+  {
+    id: 'fourteen',
+    themeId: '14',
+    name: '极简黑',
+    css: fourteenTheme
+  },
+  {
+    id: 'fifteen',
+    themeId: '15',
+    name: '橙蓝风',
+    css: fifteenTheme
+  },
+  {
+    id: 'nine',
+    themeId: '16',
+    name: '前端之巅同款',
+    css: nineTheme
   },
   {
     id: 'custom',
+    themeId: 'custom',
     name: '自定义',
-    css: customTheme,
-    description: '可自定义的空白主题'
+    css: customTheme
   }
 ];
 

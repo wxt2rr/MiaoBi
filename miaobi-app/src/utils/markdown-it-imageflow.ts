@@ -22,7 +22,7 @@ const imageFlowPlugin = (md: MarkdownIt, opt?: any) => {
 
     if (match) {
       const images = match[1].match(/\[[^\]]*\]\([^)]+\)/g);
-      if (!options.limitless && images.length <= options.limit) {
+      if (!options.limitless && images && images.length <= options.limit) {
         token = state.push("imageFlow", "", 0);
         token.meta = images;
         token.block = true;

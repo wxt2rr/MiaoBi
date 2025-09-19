@@ -26,7 +26,7 @@ import { Table } from '@tiptap/extension-table';
 import { TableRow } from '@tiptap/extension-table-row';
 import { TableCell } from '@tiptap/extension-table-cell';
 import { TableHeader } from '@tiptap/extension-table-header';
-import CodeBlock from '@tiptap/extension-code-block';
+import { HighlightCodeBlock } from './extensions/HighlightCodeBlock';
 // 样式扩展
 import Color from '@tiptap/extension-color';
 import { TextStyle } from '@tiptap/extension-text-style';
@@ -130,7 +130,11 @@ export default function TipTapEditor() {
       TableRow,
       TableHeader,
       TableCell,
-      CodeBlock,
+      HighlightCodeBlock.configure({
+        HTMLAttributes: {
+          class: 'custom',
+        },
+      }),
       // 样式
       TextStyle,
       Color,

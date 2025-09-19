@@ -1,15 +1,15 @@
 // 为 markdown-it 插件定义类型
-/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare module 'markdown-it' {
   interface MarkdownIt {
     core: {
       ruler: {
-        push: (name: string, fn: Function) => void;
+        push: (name: string, fn: (...args: any[]) => any) => void;
       };
     };
     renderer: {
       rules: {
-        [key: string]: Function;
+        [key: string]: (...args: any[]) => any;
       };
     };
     utils: {

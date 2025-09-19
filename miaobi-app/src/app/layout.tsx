@@ -24,6 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* 预设样式元素，参考Markdown2Html-main项目 */}
+        <style id="dynamic-basic-style"></style>
+        <style id="dynamic-theme-style"></style>
+        <style id="dynamic-code-style"></style>
+        <style id="dynamic-font-style"></style>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
