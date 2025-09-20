@@ -98,13 +98,17 @@ export default function WelcomeScreen() {
           </div>
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             <nav className="flex items-center space-x-6 text-sm font-medium">
-              <Button variant="ghost" size="sm">
-                <Github className="mr-2 h-4 w-4" />
-                GitHub
+              <Button variant="ghost" size="sm" asChild>
+                <a href="https://github.com/wxt2rr/MiaoBi" target="_blank" rel="noopener noreferrer">
+                  <Github className="mr-2 h-4 w-4" />
+                  GitHub
+                </a>
               </Button>
-              <Button variant="outline" size="sm">
-                <Star className="mr-2 h-4 w-4" />
-                Star
+              <Button variant="outline" size="sm" asChild>
+                <a href="https://github.com/wxt2rr/MiaoBi" target="_blank" rel="noopener noreferrer">
+                  <Star className="mr-2 h-4 w-4" />
+                  Star
+                </a>
               </Button>
             </nav>
           </div>
