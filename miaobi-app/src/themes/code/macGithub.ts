@@ -8,37 +8,60 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   display: block;
   overflow-x: auto;
   padding: 16px;
-  padding-top: 50px; /* 为Mac风格装饰留出空间 */
   color: #333;
   background: #f8f8f8;
-  border-radius: 8px;
-  position: relative;
-  margin: 16px 0;
 }
 
-.hljs:before {
+#nice pre.custom {
+  background-color: #f8f8f8 !important;
+  border: none !important;
+  border-radius: 5px !important;
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px !important;
+  margin: 16px 0 !important;
+  padding: 0 !important;
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+  overflow: visible !important;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace !important;
+}
+
+#nice pre.custom code.hljs {
+  background: #f8f8f8 !important;
+  padding: 0 0 0 10px !important;
+  font-size: inherit !important;
+  color: inherit !important;
+  border: none !important;
+  border-radius: 0 !important;
+  word-break: normal !important;
+  white-space: pre !important;
+  word-spacing: normal !important;
+  word-wrap: normal !important;
+  line-height: inherit !important;
+}
+
+#nice .custom code {
+  padding-top: 0px;
+  background: #f8f8f8;
+  border-radius: 5px;
+}
+
+#nice .custom:before {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  display: block;
+  background: url(https://shub.weiyan.tech/md2html/point.svg);
   height: 30px;
-  background: #e1e4e8;
-  border-radius: 8px 8px 0 0;
-  border-bottom: 1px solid #d1d5da;
+  width: 100%;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-color: #f8f8f8;
+  margin-bottom: -7px;
+  border-radius: 5px;
+  background-position: 10px 10px;
 }
 
-.hljs:after {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 12px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #ff5f57;
-  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #28ca42;
-  z-index: 1;
+#nice .custom {
+  border-radius: 0 0 5px 5px;
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
 }
 
 .hljs-comment,
@@ -127,12 +150,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   font-weight: bold;
 }
 
-#nice .custom code {
-  padding-top: 15px;
-  background: #f8f8f8;
-  border-radius: 5px;
-}
-
 #nice .custom:before {
   content: '';
   display:block;
@@ -143,11 +160,11 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   background-repeat: no-repeat;
   background-color: #f8f8f8;
   margin-bottom: -7px;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   background-position: 10px 10px;
 }
 
 #nice .custom {
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
 }`;

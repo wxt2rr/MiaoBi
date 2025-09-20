@@ -65,6 +65,28 @@ export class CodeThemeManager {
       const scopedSelectors = selector.split(',')
         .map((part: string) => {
           const trimmed = part.trim();
+          
+          // 如果已经有#nice前缀，直接返回
+          if (trimmed.startsWith('#nice')) {
+            return trimmed;
+          }
+          
+          // 特殊处理Mac装饰选择器
+          if (trimmed.includes('.custom:before') || trimmed.includes('.custom:after') || 
+              trimmed.includes('pre.custom:before') || trimmed.includes('pre.custom:after')) {
+            return trimmed; // 已经有#nice前缀，直接返回
+          }
+          
+          // 处理 .custom 选择器
+          if (trimmed === '.custom') {
+            return `#nice ${trimmed}`;
+          }
+          
+          // 处理 pre.custom 选择器
+          if (trimmed === 'pre.custom') {
+            return `#nice ${trimmed}`;
+          }
+          
           // 为每个选择器创建两个版本：一个用于 pre.custom，一个用于 pre
           // 同时支持 code 元素内的 hljs 类
           if (trimmed.startsWith('.hljs')) {
@@ -75,7 +97,8 @@ export class CodeThemeManager {
         .join(', ');
       return `${prefix} ${scopedSelectors} {`;
     });
-    // console.log('CSS作用域处理:', { originalLength: css.length, scopedLength: scopedCss.length });
+    console.log('CSS作用域处理:', { originalLength: css.length, scopedLength: scopedCss.length });
+    console.log('处理后的CSS片段:', scopedCss.substring(0, 1000));
     return scopedCss;
   }
 
@@ -124,6 +147,50 @@ export class CodeThemeManager {
       // 为CSS添加作用域并应用样式
       const scopedCSS = this.addScopeToCSS(themeCss);
       replaceStyle('dynamic-code-style', scopedCSS);
+      
+      // 调试信息
+      console.log('应用代码主题:', { themeId, codeNum, isMacCode, cssLength: scopedCSS.length });
+      console.log('CSS内容预览:', scopedCSS.substring(0, 1000));
+      
+      // 检查关键选择器
+      const keySelectors = [
+        '#nice pre.custom',
+        '#nice .custom code',
+        '#nice pre.custom code.hljs',
+        '#nice .custom:before'
+      ];
+      
+      keySelectors.forEach(selector => {
+        if (scopedCSS.includes(selector)) {
+          console.log(`✅ 找到选择器: ${selector}`);
+        } else {
+          console.log(`❌ 缺少选择器: ${selector}`);
+        }
+      });
+      
+      // 检查DOM中的代码块
+      setTimeout(() => {
+        const codeBlocks = document.querySelectorAll('#nice pre.custom');
+        console.log('找到代码块数量:', codeBlocks.length);
+        if (codeBlocks.length > 0) {
+          const firstBlock = codeBlocks[0] as HTMLElement;
+          console.log('第一个代码块的样式:', {
+            backgroundColor: getComputedStyle(firstBlock).backgroundColor,
+            borderRadius: getComputedStyle(firstBlock).borderRadius,
+            boxShadow: getComputedStyle(firstBlock).boxShadow,
+            className: firstBlock.className
+          });
+          
+          // 检查是否有:before伪元素
+          const beforeStyle = getComputedStyle(firstBlock, '::before');
+          console.log('::before伪元素样式:', {
+            content: beforeStyle.content,
+            display: beforeStyle.display,
+            backgroundImage: beforeStyle.backgroundImage,
+            height: beforeStyle.height
+          });
+        }
+      }, 100);
     } catch (error) {
       console.error('应用代码主题失败:', error);
       replaceStyle('dynamic-code-style', '');

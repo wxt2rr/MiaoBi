@@ -55,7 +55,7 @@ export default function EditorLayout() {
       <header className="flex items-center justify-between p-4 border-b">
         <div className="flex items-center space-x-2">
           <FileText className="h-6 w-6 text-primary" />
-          <h1 className="text-xl font-semibold">妙笔 - 微信文章副驾驶</h1>
+          <h1 className="text-xl font-semibold">妙笔</h1>
         </div>
         
         <div className="flex items-center space-x-2">
@@ -94,11 +94,6 @@ export default function EditorLayout() {
         {/* 右侧预览区域 */}
         {showPreview && (
           <div className="w-1/2 flex flex-col ml-1 h-full">
-            <div className="p-2 border-b bg-muted/50 flex-shrink-0">
-              <h3 className="text-sm font-medium text-muted-foreground">
-                微信预览
-              </h3>
-            </div>
             <div className="flex-1 overflow-hidden min-h-0" ref={previewScrollRef}>
               <PreviewPanel content={content} />
             </div>

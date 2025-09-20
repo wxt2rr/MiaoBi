@@ -276,19 +276,39 @@ export class MarkdownService {
   /**
    * 验证 Markdown 文件
    */
-  validateMarkdownFile(file: File): Promise<boolean> {
+  validateMarkdownFile(file: File): Promise<{ valid: boolean; error?: string }> {
     return new Promise((resolve) => {
-      if (!file.name.toLowerCase().endsWith('.md')) {
-        resolve(false);
+      console.log('验证文件:', {
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        lastModified: file.lastModified
+      });
+      
+      // 检查文件扩展名
+      const fileName = file.name.toLowerCase();
+      if (!fileName.endsWith('.md') && !fileName.endsWith('.markdown')) {
+        console.log('文件扩展名验证失败:', fileName);
+        resolve({ valid: false, error: '文件必须是 .md 或 .markdown 格式' });
         return;
       }
       
-      if (file.size > 10 * 1024 * 1024) { // 10MB 限制
-        resolve(false);
+      // 检查文件大小（增加到20MB）
+      if (file.size > 20 * 1024 * 1024) { // 20MB 限制
+        console.log('文件大小验证失败:', file.size);
+        resolve({ valid: false, error: '文件大小不能超过 20MB' });
         return;
       }
       
-      resolve(true);
+      // 检查文件名长度
+      if (file.name.length > 255) {
+        console.log('文件名长度验证失败:', file.name.length);
+        resolve({ valid: false, error: '文件名过长，请重命名后重试' });
+        return;
+      }
+      
+      console.log('文件验证通过');
+      resolve({ valid: true });
     });
   }
 
@@ -300,15 +320,32 @@ export class MarkdownService {
       const reader = new FileReader();
       
       reader.onload = (e) => {
-        const content = e.target?.result as string;
-        resolve(content);
+        try {
+          const content = e.target?.result as string;
+          if (!content) {
+            reject(new Error('文件内容为空'));
+            return;
+          }
+          resolve(content);
+        } catch (error) {
+          reject(new Error('文件内容解析失败: ' + (error as Error).message));
+        }
       };
       
-      reader.onerror = () => {
-        reject(new Error('文件读取失败'));
+      reader.onerror = (error) => {
+        console.error('文件读取错误:', error);
+        reject(new Error('文件读取失败，请检查文件是否损坏'));
       };
       
-      reader.readAsText(file, 'UTF-8');
+      reader.onabort = () => {
+        reject(new Error('文件读取被中断'));
+      };
+      
+      try {
+        reader.readAsText(file, 'UTF-8');
+      } catch (error) {
+        reject(new Error('无法读取文件: ' + (error as Error).message));
+      }
     });
   }
 

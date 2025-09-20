@@ -53,7 +53,6 @@ export default function TipTapEditor() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [aiContentRange, setAiContentRange] = useState<{ from: number; to: number } | null>(null);
   const [isImporting, setIsImporting] = useState(false);
-  const [isExporting, setIsExporting] = useState(false);
   const [isMarkdownMode, setIsMarkdownMode] = useState(false);
   const [markdownContent, setMarkdownContent] = useState('');
   const editorRef = useRef<HTMLDivElement>(null);
@@ -238,12 +237,23 @@ export default function TipTapEditor() {
     try {
       setIsImporting(true);
       
+      // 调试信息
+      console.log('开始导入文件:', {
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        lastModified: new Date(file.lastModified).toISOString()
+      });
+      
       // 验证文件
-      const isValid = await markdownService.validateMarkdownFile(file);
-      if (!isValid) {
-        alert('请选择有效的 Markdown 文件（.md 格式，大小不超过 10MB）');
+      const validation = await markdownService.validateMarkdownFile(file);
+      if (!validation.valid) {
+        console.error('文件验证失败:', validation.error);
+        alert(validation.error || '请选择有效的 Markdown 文件');
         return;
       }
+      
+      console.log('文件验证通过，开始读取内容...');
 
       // 读取文件内容
       const markdownContent = await markdownService.readMarkdownFile(file);
@@ -281,7 +291,8 @@ export default function TipTapEditor() {
       }
     } catch (error) {
       console.error('导入失败:', error);
-      alert('导入失败，请检查文件格式是否正确');
+      const errorMessage = error instanceof Error ? error.message : '导入失败，请检查文件格式是否正确';
+      alert('导入失败: ' + errorMessage);
     } finally {
       setIsImporting(false);
       // 清空文件输入
@@ -291,40 +302,6 @@ export default function TipTapEditor() {
     }
   }, [editor, setContent, isMarkdownMode]);
 
-  // Markdown 导出处理
-  const handleMarkdownExport = useCallback(async () => {
-    try {
-      setIsExporting(true);
-      
-      let contentToExport: string;
-      
-      if (isMarkdownMode) {
-        // 如果在 Markdown 模式，直接使用当前 Markdown 内容
-        contentToExport = markdownContent;
-      } else {
-        // 如果在富文本模式，获取编辑器内容并转换为 Markdown
-        if (!editor) return;
-        
-        const htmlContent = editor.getHTML();
-        contentToExport = markdownService.htmlToMarkdown(htmlContent);
-      }
-      
-      // 生成文件名
-      const now = new Date();
-      const timestamp = now.toISOString().slice(0, 19).replace(/:/g, '-');
-      const filename = `document-${timestamp}.md`;
-      
-      // 下载文件
-      markdownService.downloadMarkdownFile(contentToExport, filename);
-      
-      alert('Markdown 文件导出成功！');
-    } catch (error) {
-      console.error('导出失败:', error);
-      alert('导出失败，请重试');
-    } finally {
-      setIsExporting(false);
-    }
-  }, [editor, isMarkdownMode, markdownContent]);
 
   // 触发文件选择
   const triggerFileImport = useCallback(() => {
@@ -582,9 +559,7 @@ export default function TipTapEditor() {
           }
         }}
         onImportMarkdown={triggerFileImport}
-        onExportMarkdown={handleMarkdownExport}
         isImporting={isImporting}
-        isExporting={isExporting}
       />
 
       <div className="flex-1 overflow-y-auto" id="editor-scroll-container">
@@ -665,7 +640,7 @@ export default function TipTapEditor() {
       <input
         ref={fileInputRef}
         type="file"
-        accept=".md,.markdown"
+        accept="*/*"
         onChange={handleMarkdownImport}
         className="hidden"
       />

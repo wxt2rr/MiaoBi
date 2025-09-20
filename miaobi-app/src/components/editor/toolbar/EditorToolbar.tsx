@@ -12,16 +12,14 @@ import { TableGroup } from './groups/TableGroup';
 import { CodeGroup } from './groups/CodeGroup';
 import { ColorGroup } from './groups/ColorGroup';
 import { AlignmentGroup } from './groups/AlignmentGroup';
-import { FileText, Edit3, Upload, Download } from 'lucide-react';
+import { FileText, Edit3, Upload } from 'lucide-react';
 
 interface EditorToolbarProps {
   editor: Editor | null;
   isMarkdownMode: boolean;
   onModeChange: (mode: 'rich' | 'markdown') => void;
   onImportMarkdown: () => void;
-  onExportMarkdown: () => void;
   isImporting: boolean;
-  isExporting: boolean;
 }
 
 export function EditorToolbar({ 
@@ -29,9 +27,7 @@ export function EditorToolbar({
   isMarkdownMode, 
   onModeChange, 
   onImportMarkdown, 
-  onExportMarkdown, 
-  isImporting, 
-  isExporting 
+  isImporting 
 }: EditorToolbarProps) {
   if (!editor) {
     return null;
@@ -72,7 +68,7 @@ export function EditorToolbar({
             <MediaGroup editor={editor} showOnlyImageUpload={true} />
             <Separator orientation="vertical" className="h-6 mx-1" />
             
-            {/* 导入/导出按钮 */}
+            {/* 导入按钮 */}
             <button
               onClick={onImportMarkdown}
               disabled={isImporting}
@@ -81,15 +77,6 @@ export function EditorToolbar({
             >
               <Upload className="w-3 h-3" />
               {isImporting ? '导入中...' : '导入 MD'}
-            </button>
-            <button
-              onClick={onExportMarkdown}
-              disabled={isExporting}
-              className="flex items-center gap-1 px-2 py-1 text-xs bg-secondary text-secondary-foreground rounded hover:bg-secondary/90 disabled:opacity-50"
-              title="导出为 Markdown 文件"
-            >
-              <Download className="w-3 h-3" />
-              {isExporting ? '导出中...' : '导出 MD'}
             </button>
           </>
         ) : (
