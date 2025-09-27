@@ -11,8 +11,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { useSettingsStore } from '@/stores/settings-store';
-import { Eye, EyeOff, Save, Settings, Bot, Image as ImageIcon } from 'lucide-react';
+import { Eye, EyeOff, Save, Settings, Bot, Image as ImageIcon, Cloud } from 'lucide-react';
 import type { ImageGenerationConfig } from '@/types';
+import { CloudStorageSettings } from './CloudStorageSettings';
 
 interface SettingsDialogProps {
   children?: React.ReactNode;
@@ -60,7 +61,7 @@ export default function SettingsDialog({ children }: SettingsDialogProps) {
         </DialogHeader>
 
         <Tabs defaultValue="ai" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="ai" className="flex items-center gap-2">
               <Bot className="w-4 h-4" />
               AI文本
@@ -68,6 +69,10 @@ export default function SettingsDialog({ children }: SettingsDialogProps) {
             <TabsTrigger value="image" className="flex items-center gap-2">
               <ImageIcon className="w-4 h-4" />
               AI图像
+            </TabsTrigger>
+            <TabsTrigger value="cloud" className="flex items-center gap-2">
+              <Cloud className="w-4 h-4" />
+              云存储
             </TabsTrigger>
           </TabsList>
 
@@ -286,6 +291,11 @@ export default function SettingsDialog({ children }: SettingsDialogProps) {
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          {/* 云存储设置 */}
+          <TabsContent value="cloud" className="space-y-4">
+            <CloudStorageSettings />
           </TabsContent>
         </Tabs>
 

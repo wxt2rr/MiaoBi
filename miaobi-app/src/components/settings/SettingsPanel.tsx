@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useSettingsStore } from '@/stores/settings-store';
 import { Eye, EyeOff, Save } from 'lucide-react';
 import type { ImageGenerationConfig } from '@/types';
+import { CloudStorageSettings } from './CloudStorageSettings';
 
 interface SettingsPanelProps {
   onClose: () => void;
@@ -128,6 +129,9 @@ export default function SettingsPanel({ onClose }: SettingsPanelProps) {
             </div>
           </div>
         </div>
+
+        {/* 云存储配置 */}
+        <CloudStorageSettings />
 
         {/* 图像生成配置 */}
         <div className="space-y-6">

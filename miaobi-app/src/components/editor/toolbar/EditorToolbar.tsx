@@ -12,6 +12,7 @@ import { TableGroup } from './groups/TableGroup';
 import { CodeGroup } from './groups/CodeGroup';
 import { ColorGroup } from './groups/ColorGroup';
 import { AlignmentGroup } from './groups/AlignmentGroup';
+import { CloudUploadGroup } from './groups/CloudUploadGroup';
 import { FileText, Edit3, Upload } from 'lucide-react';
 
 interface EditorToolbarProps {
@@ -34,8 +35,8 @@ export function EditorToolbar({
   }
 
   return (
-    <div className="border-b bg-background p-2">
-      <div className="flex flex-wrap items-center gap-1">
+    <div className="border-b bg-background p-2 overflow-x-auto">
+      <div className="flex items-center gap-1 min-w-max">
         {/* 模式切换下拉框 - 放在首位 */}
         <div className="flex items-center gap-2 mr-2">
           <Select value={isMarkdownMode ? 'markdown' : 'rich'} onValueChange={onModeChange}>
@@ -66,6 +67,10 @@ export function EditorToolbar({
           <>
             {/* 媒体组 - 只显示上传图片 */}
             <MediaGroup editor={editor} showOnlyImageUpload={true} />
+            <Separator orientation="vertical" className="h-6 mx-1" />
+            
+            {/* 云上传组 */}
+            <CloudUploadGroup editor={editor} />
             <Separator orientation="vertical" className="h-6 mx-1" />
             
             {/* 导入按钮 */}
@@ -100,6 +105,10 @@ export function EditorToolbar({
             
             {/* 媒体组 */}
             <MediaGroup editor={editor} />
+            <Separator orientation="vertical" className="h-6 mx-1" />
+            
+            {/* 云上传组 - 放在媒体组右侧 */}
+            <CloudUploadGroup editor={editor} />
             <Separator orientation="vertical" className="h-6 mx-1" />
             
             {/* 表格组 */}

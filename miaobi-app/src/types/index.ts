@@ -140,10 +140,40 @@ export interface ImageGenerationConfig {
   imageStyle?: string;
 }
 
+// 云存储配置类型
+export interface CloudStorageConfig {
+  provider: 'github' | 's3' | 'wechat' | 'juejin' | 'local';
+  enabled: boolean;
+  // GitHub 配置
+  github?: {
+    token?: string;
+    repo?: string;
+    owner?: string;
+    branch?: string;
+    path?: string;
+  };
+  // S3 通用配置
+  s3?: {
+    endpoint?: string;
+    accessKeyId?: string;
+    secretAccessKey?: string;
+    bucket?: string;
+    region?: string;
+    path?: string;
+  };
+  // 平台特定配置
+  platform?: {
+    apiUrl?: string;
+    token?: string;
+    uploadPath?: string;
+  };
+}
+
 // 用户设置类型
 export interface UserSettings {
   aiConfig: AIConfig;
   imageConfig: ImageGenerationConfig;
+  cloudStorage: CloudStorageConfig;
   defaultTheme: string;
   autoSave: boolean;
   autoSaveInterval: number;
